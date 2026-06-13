@@ -147,47 +147,10 @@
   }
 
   /* ────────────────────────────
-     2. CUSTOM CURSOR
+     2. CUSTOM CURSOR — disabled, normal cursor on all pages
      ──────────────────────────── */
   function initCursor() {
-    // Hide cursor entirely on touch devices — no half-working hybrid
-    if (reducedMotion || window.matchMedia('(hover: none)').matches || window.matchMedia('(pointer: coarse)').matches) {
-      const glow = document.querySelector('.cursor-glow');
-      const dot = document.querySelector('.cursor-dot');
-      if (glow) glow.style.display = 'none';
-      if (dot) dot.style.display = 'none';
-      document.body.style.cursor = 'auto';
-      return;
-    }
-
-    const glow = document.querySelector('.cursor-glow');
-    const dot = document.querySelector('.cursor-dot');
-    if (!glow || !dot) return;
-
-    let gx = window.innerWidth / 2, gy = window.innerHeight / 2;
-    let dx = window.innerWidth / 2, dy = window.innerHeight / 2;
-
-    document.addEventListener('mousemove', (e) => {
-      gx = e.clientX;
-      gy = e.clientY;
-    });
-
-    function animateCursor() {
-      // Faster lerp (0.25 vs 0.08) — cursor keeps up with mouse
-      dx += (gx - dx) * 0.25;
-      dy += (gy - dy) * 0.25;
-      glow.style.transform = `translate(${gx}px, ${gy}px) translate(-50%, -50%)`;
-      dot.style.transform = `translate(${dx}px, ${dy}px) translate(-50%, -50%)`;
-      requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-
-    // Hover effect on interactive elements
-    const interactives = document.querySelectorAll('a, button, .service-card, .roi-card, .case-card, .trust-card, .score-option, .nav-toggle, .plan-card, .industry, .feature-card, .trust-engine-card');
-    interactives.forEach((el) => {
-      el.addEventListener('mouseenter', () => dot.classList.add('hovering'));
-      el.addEventListener('mouseleave', () => dot.classList.remove('hovering'));
-    });
+    // Normal browser cursor everywhere. No custom cursor.
   }
 
   /* ────────────────────────────
