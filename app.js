@@ -329,17 +329,22 @@
     const utmField = document.getElementById('utm-field');
 
     function updateDetail() {
-      details.forEach((d) => d.classList.toggle('is-active', d.dataset.detail === select.value));
+      // data-detail values are exact service names; match on the select's
+      // selected option LABEL so it works regardless of value attributes.
+      const chosen = (select.selectedOptions[0]?.text || '').trim();
+      details.forEach((d) => d.classList.toggle('is-active', (d.dataset.detail || '').trim() === chosen));
     }
 
     try {
       const params = new URLSearchParams(window.location.search);
       const service = params.get('service');
       if (service) {
+        let matched = false;
         for (const opt of select.options) {
-          if (opt.value === service || opt.text === service) { select.value = opt.value; break; }
+          // compare on label text: option values are unset, so .value mirrors text
+          if (opt.text.trim().toLowerCase() === service.trim().toLowerCase()) { select.value = opt.value; matched = true; break; }
         }
-        if (utmField) utmField.value = `Arrived from: ${service}`;
+        if (matched && utmField) utmField.value = `Arrived from: ${service}`;
       }
     } catch (_) { /* noop */ }
 
@@ -347,6 +352,7 @@
       updateDetail();
       if (utmField && select.value) utmField.value = `Selected service: ${select.value}`;
     });
+    if (select.value) utmField.value = `Selected service: ${select.value}`;
     updateDetail();
   }
 
