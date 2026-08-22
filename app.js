@@ -1,183 +1,124 @@
 /* ══════════════════════════════════════════════════════════
-   DECRUX TECH — Immersive Experience Engine v2
+   DECRUX TECH — Experience Engine v3 "Signal"
+   Lean motion: constellation canvas, reveals, live widgets.
    ══════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ────────────────────────────
-     1. 3D PARTICLE COSMOS (Canvas)
-     ──────────────────────────── */
+  /* ── 1. CONSTELLATION CANVAS (hero accent) ── */
   function initParticles() {
     const canvas = document.getElementById('bg-canvas');
     if (!canvas || reducedMotion) return;
 
-    const ctx = canvas.getContext('2d');
-    let width, height, centerX, centerY;
+    const ctx = canvas.getContext('2d', { alpha: true });
+    if (!ctx) return;
+
+    let width, height, dpr;
+    const COUNT = 70;                 // capped for perf
+    const LINK_DIST = 140;
     const particles = [];
-    const PARTICLE_COUNT = 160;
-    const CONNECTION_DIST = 150;
-    let mouse = { x: 0, y: 0, vx: 0, vy: 0 };
-    let frameId;
+    let frameId = 0;
+    let running = true;
 
     function resize() {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
       width = window.innerWidth;
       height = window.innerHeight;
       canvas.width = width * dpr;
       canvas.height = height * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      centerX = width / 2;
-      centerY = height / 2;
     }
 
-    function createParticles() {
+    function create() {
       particles.length = 0;
-      for (let i = 0; i < PARTICLE_COUNT; i++) {
-        const theta = Math.random() * Math.PI * 2;
-        const phi = Math.random() * Math.PI;
-        const radius = 60 + Math.random() * (Math.min(width, height) * 0.35);
+      for (let i = 0; i < COUNT; i++) {
         particles.push({
-          x: centerX + radius * Math.sin(phi) * Math.cos(theta),
-          y: centerY + radius * Math.cos(phi),
-          z: radius * Math.sin(phi) * Math.sin(theta),
-          r: 0.6 + Math.random() * 1.6,
-          speedZ: 0.0002 + Math.random() * 0.0004,
-          speedAngle: (Math.random() - 0.5) * 0.002,
-          theta: theta,
-          phi: phi,
-          radius: radius,
-          baseAlpha: 0.3 + Math.random() * 0.5,
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - .5) * .22,
+          vy: (Math.random() - .5) * .22,
+          r: .8 + Math.random() * 1.4,
         });
       }
     }
 
     function draw() {
+      if (!running) return;
       ctx.clearRect(0, 0, width, height);
 
-      // Sort by z for depth
-      particles.sort((a, b) => a.z - b.z);
-
-      // Mouse influence
-      const mdx = mouse.vx * 0.0003;
-      const mdy = mouse.vy * 0.0003;
-
-      const projected = [];
-
       for (const p of particles) {
-        // Rotate
-        p.theta += p.speedAngle + mdx;
-        p.phi += 0.0003 + mdy;
-
-        // Sphere position
-        const r = p.radius;
-        const sx = r * Math.sin(p.phi) * Math.cos(p.theta);
-        const sy = r * Math.cos(p.phi);
-        const sz = r * Math.sin(p.phi) * Math.sin(p.theta);
-
-        p.x = centerX + sx;
-        p.y = centerY + sy;
-        p.z = sz;
-
-        // Depth-based sizing and alpha
-        const depthNorm = (p.z + r) / (2 * r);
-        const size = p.r * (0.4 + 0.6 * depthNorm);
-        const alpha = p.baseAlpha * (0.3 + 0.7 * depthNorm);
-
-        projected.push({ x: p.x, y: p.y, size, alpha, idx: projected.length });
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < -20) p.x = width + 20; else if (p.x > width + 20) p.x = -20;
+        if (p.y < -20) p.y = height + 20; else if (p.y > height + 20) p.y = -20;
       }
 
-      // Draw connections (only between close particles in 2D)
-      for (let i = 0; i < projected.length; i++) {
-        for (let j = i + 1; j < projected.length; j++) {
-          const a = projected[i];
-          const b = projected[j];
-          const dx = a.x - b.x;
-          const dy = a.y - b.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < CONNECTION_DIST) {
-            const connAlpha = (1 - dist / CONNECTION_DIST) * 0.12;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(90, 180, 255, ${connAlpha})`;
-            ctx.lineWidth = 0.6;
-            ctx.stroke();
+      for (let i = 0; i < particles.length; i++) {
+        const a = particles[i];
+        for (let j = i + 1; j < particles.length; j++) {
+          const b = particles[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 < LINK_DIST * LINK_DIST) {
+            const t = 1 - Math.sqrt(d2) / LINK_DIST;
+            ctx.strokeStyle = `rgba(27,124,255,${(t * .16).toFixed(3)})`;
+            ctx.lineWidth = .7;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
           }
         }
       }
 
-      // Draw particles
-      for (const p of projected) {
+      for (const p of particles) {
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(180, 240, 255, ${p.alpha})`;
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(150,205,255,.5)';
         ctx.fill();
-
-        // Glow
-        if (p.size > 1.2) {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(101, 209, 66, ${p.alpha * 0.08})`;
-          ctx.fill();
-        }
       }
-
-      // Decay mouse velocity
-      mouse.vx *= 0.92;
-      mouse.vy *= 0.92;
 
       frameId = requestAnimationFrame(draw);
     }
 
-    // Track mouse for parallax
-    document.addEventListener('mousemove', (e) => {
-      mouse.vx += (e.clientX - mouse.x) * 0.01;
-      mouse.vy += (e.clientY - mouse.y) * 0.01;
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
+    // Pause when tab is hidden — no background burn
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        running = false;
+        cancelAnimationFrame(frameId);
+      } else if (!running) {
+        running = true;
+        draw();
+      }
     });
 
     resize();
-    createParticles();
+    create();
     draw();
-    window.addEventListener('resize', resize);
-    window.addEventListener('pagehide', () => cancelAnimationFrame(frameId));
+    window.addEventListener('resize', () => { resize(); create(); });
+    window.addEventListener('pagehide', () => { running = false; cancelAnimationFrame(frameId); });
   }
 
-  /* ────────────────────────────
-     2. CUSTOM CURSOR — disabled, normal cursor on all pages
-     ──────────────────────────── */
-  function initCursor() {
-    // Normal browser cursor everywhere. No custom cursor.
-  }
-
-  /* ────────────────────────────
-     3. SCROLL PROGRESS
-     ──────────────────────────── */
+  /* ── 2. SCROLL PROGRESS ── */
   function initScrollProgress() {
-    if (reducedMotion) return;
     const bar = document.querySelector('.scroll-progress');
     if (!bar) return;
-
-    function update() {
-      const scroll = window.scrollY;
-      const height = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.width = `${(scroll / height) * 100}%`;
-      requestAnimationFrame(update);
-    }
-    update();
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const max = document.documentElement.scrollHeight - window.innerHeight;
+          bar.style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
   }
 
-  /* ────────────────────────────
-     4. HEADER SCROLL EFFECT
-     ──────────────────────────── */
+  /* ── 3. HEADER SCROLL STATE ── */
   function initHeader() {
     const header = document.getElementById('header');
     if (!header) return;
     let ticking = false;
-
     window.addEventListener('scroll', () => {
       if (!ticking) {
         requestAnimationFrame(() => {
@@ -189,9 +130,7 @@
     }, { passive: true });
   }
 
-  /* ────────────────────────────
-     5. MOBILE NAV TOGGLE
-     ──────────────────────────── */
+  /* ── 4. MOBILE NAV ── */
   function initNav() {
     const toggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -210,9 +149,7 @@
     });
   }
 
-  /* ────────────────────────────
-     6. TYPEWRITER / TERMINAL
-     ──────────────────────────── */
+  /* ── 5. TYPEWRITER (command panel terminal) ── */
   function initTypewriter() {
     if (reducedMotion) return;
     const el = document.getElementById('typed-output');
@@ -229,106 +166,73 @@
 
     function type() {
       const phrase = phrases[phraseIndex];
-
       if (!deleting) {
         el.textContent = phrase.slice(0, charIndex + 1);
         charIndex++;
         if (charIndex >= phrase.length) {
           deleting = true;
-          setTimeout(type, 1800);
+          setTimeout(type, 1900);
           return;
         }
-        setTimeout(type, 32 + Math.random() * 20);
+        setTimeout(type, 30 + Math.random() * 22);
       } else {
         el.textContent = phrase.slice(0, charIndex);
         charIndex--;
         if (charIndex <= 0) {
           deleting = false;
           phraseIndex = (phraseIndex + 1) % phrases.length;
-          setTimeout(type, 300);
+          setTimeout(type, 320);
           return;
         }
-        setTimeout(type, 16);
+        setTimeout(type, 15);
       }
     }
     type();
   }
 
-  /* ────────────────────────────
-     7. COMMAND PANEL 3D TILT
-     ──────────────────────────── */
+  /* ── 6. PANEL TILT (desktop pointer only, subtle) ── */
   function initPanelTilt() {
     if (reducedMotion) return;
     const panel = document.querySelector('.command-panel');
-    if (!panel) return;
+    if (!panel || !window.matchMedia('(hover: hover)').matches) return;
 
     panel.addEventListener('pointermove', (e) => {
       const rect = panel.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      panel.style.transform = `rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
+      const x = (e.clientX - rect.left) / rect.width - .5;
+      const y = (e.clientY - rect.top) / rect.height - .5;
+      panel.style.transform = `rotateY(${(x * 4).toFixed(2)}deg) rotateX(${(-y * 4).toFixed(2)}deg)`;
     });
-
-    panel.addEventListener('pointerleave', () => {
-      panel.style.transform = '';
-    });
+    panel.addEventListener('pointerleave', () => { panel.style.transform = ''; });
   }
 
-  /* ────────────────────────────
-     8. SCROLL REVEAL ANIMATIONS
-     ──────────────────────────── */
+  /* ── 7. SCROLL REVEAL ── */
   function initScrollReveal() {
     if (!('IntersectionObserver' in window)) return;
-
-    const selectors = [
-      '.section-head', '.service-card', '.roi-card', '.case-card',
-      '.trust-card', '.stat-item', '.score-card', '.calculator-card',
-      '.cta-block', '.hero-copy', '.command-panel'
-    ];
-    const targets = document.querySelectorAll(selectors.join(','));
+    const targets = document.querySelectorAll(
+      '.section-head, .service-card, .roi-card, .case-card, .trust-card, ' +
+      '.stat-item, .score-card, .calculator-card, .cta-block, .plan-card'
+    );
     if (!targets.length) return;
 
-    // Add animation classes
+    // No-JS / reduced-motion safety: CSS only hides when .animate-* present.
     targets.forEach((el, i) => {
-      if (el.classList.contains('hero-copy') || el.classList.contains('command-panel')) return;
       el.classList.add('animate-fade');
-      el.style.transitionDelay = `${(i % 8) * 50}ms`;
+      el.style.transitionDelay = `${(i % 6) * 55}ms`;
     });
-
-    // Animate hero elements directly
-    const heroEls = document.querySelectorAll('.hero-copy > *');
-    heroEls.forEach((el, i) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-    });
-
-    // Fade in hero immediately
-    setTimeout(() => {
-      heroEls.forEach((el, i) => {
-        el.style.transition = `opacity 0.6s ease ${0.1 + i * 0.08}s, transform 0.6s ease ${0.1 + i * 0.08}s`;
-        el.style.opacity = '1';
-        el.style.transform = 'translateY(0)';
-      });
-    }, 200);
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('show');
+          entry.target.classList.add('in');
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: .1, rootMargin: '0px 0px -36px 0px' });
 
-    targets.forEach((target) => {
-      if (target.classList.contains('hero-copy') || target.classList.contains('command-panel')) return;
-      observer.observe(target);
-    });
+    targets.forEach((t) => observer.observe(t));
   }
 
-  /* ────────────────────────────
-     9. ANIMATED COUNTERS
-     ──────────────────────────── */
+  /* ── 8. COUNTERS ── */
   function initCounters() {
     const counters = document.querySelectorAll('.counter');
     if (!counters.length) return;
@@ -342,29 +246,16 @@
           if (!entry.isIntersecting) return;
           observer.unobserve(counter);
 
-          if (reducedMotion) {
-            counter.textContent = target;
-            return;
-          }
+          if (reducedMotion) { counter.textContent = target > 1 ? `${target}+` : String(target); return; }
 
-          const duration = 1500 + Math.random() * 800;
+          const duration = 1400;
           const start = performance.now();
 
           function update(now) {
-            const elapsed = now - start;
-            const progress = Math.min(elapsed / duration, 1);
-            // Ease out cubic
+            const progress = Math.min((now - start) / duration, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
             const current = Math.round(eased * target);
-
-            if (target <= 3) {
-              counter.textContent = current;
-            } else {
-              counter.textContent = current;
-              // Add + suffix for some
-              if (current >= target && target > 1) counter.textContent = `${target}+`;
-            }
-
+            counter.textContent = String(current);
             if (progress < 1) {
               requestAnimationFrame(update);
             } else {
@@ -373,15 +264,13 @@
           }
           requestAnimationFrame(update);
         });
-      }, { threshold: 0.3 });
+      }, { threshold: .3 });
 
       observer.observe(counter);
     });
   }
 
-  /* ────────────────────────────
-     10. RISK SCORE
-     ──────────────────────────── */
+  /* ── 9. RISK SCORE (business logic — unchanged) ── */
   function initRiskScore() {
     const form = document.getElementById('risk-score');
     if (!form) return;
@@ -406,9 +295,7 @@
     updateScore();
   }
 
-  /* ────────────────────────────
-     11. SAVINGS CALCULATOR
-     ──────────────────────────── */
+  /* ── 10. SAVINGS CALCULATOR (business logic — unchanged) ── */
   function initSavingsCalculator() {
     const form = document.getElementById('savings-form');
     if (!form) return;
@@ -434,12 +321,38 @@
     update();
   }
 
-  /* ────────────────────────────
-     INIT
-     ──────────────────────────── */
+  /* ── 11. CONTACT FORM CONTEXT (service select → detail fields + UTM context) ── */
+  function initContactFormContext() {
+    const select = document.querySelector('[data-service-select]');
+    if (!select) return;
+    const details = document.querySelectorAll('.service-detail');
+    const utmField = document.getElementById('utm-field');
+
+    function updateDetail() {
+      details.forEach((d) => d.classList.toggle('is-active', d.dataset.detail === select.value));
+    }
+
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const service = params.get('service');
+      if (service) {
+        for (const opt of select.options) {
+          if (opt.value === service || opt.text === service) { select.value = opt.value; break; }
+        }
+        if (utmField) utmField.value = `Arrived from: ${service}`;
+      }
+    } catch (_) { /* noop */ }
+
+    select.addEventListener('change', () => {
+      updateDetail();
+      if (utmField && select.value) utmField.value = `Selected service: ${select.value}`;
+    });
+    updateDetail();
+  }
+
+  /* ── INIT ── */
   document.addEventListener('DOMContentLoaded', () => {
     initParticles();
-    initCursor();
     initScrollProgress();
     initHeader();
     initNav();
@@ -449,6 +362,7 @@
     initCounters();
     initRiskScore();
     initSavingsCalculator();
+    initContactFormContext();
   });
 
 })();
