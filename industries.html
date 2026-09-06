@@ -3,33 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Industry Technology Support | Decrux Tech Regina</title>
-  <meta name="description" content="Industry-specific IT support, cybersecurity, website and automation guidance for clinics, trades, professional services, nonprofits and retail teams in Saskatchewan.">
-  <meta name="theme-color" content="#02050e">
-    <link rel="canonical" href="https://decruxtech.com/industries.html">
+  <title>Industries — Decrux Tech</title>
+  <meta name="description" content="Industry playbooks from Decrux Tech: IT, security, websites and automation matched to how clinics, trades, professional services, nonprofits, retail and restaurants actually work.">
+  <meta name="theme-color" content="#08090a">
+  <link rel="canonical" href="https://decruxtech.com/industries.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Decrux Tech">
-  <meta property="og:title" content="Industry Technology Support | Decrux Tech Regina">
+  <meta property="og:title" content="Industries — Decrux Tech">
   <meta property="og:url" content="https://decruxtech.com/industries.html">
   <link rel="icon" href="decrux-icon.svg?v=20260608-2" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..950&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=3">
-  <script defer src="app.js?v=3"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=4">
+  <script defer src="app.js?v=4"></script>
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"></div>
-  <!-- Background cosmos -->
-  <canvas id="bg-canvas" aria-hidden="true"></canvas>
   <a class="skip-link" href="#main">Skip to content</a>
-
-  <div class="topbar">
-    <div class="wrap">
-      <span class="topbar-badge"><span class="pulse-dot"></span> Regina technology partner for modern operators</span>
-      <span class="topbar-contact"><a href="tel:+13068073430">306-807-3430</a> · <a href="mailto:info@decruxtech.com">info@decruxtech.com</a></span>
-    </div>
-  </div>
 
   <header class="site-header" id="header">
     <div class="wrap nav">
@@ -44,123 +35,124 @@
         <a href="industries.html" data-nav="industries">Industries</a>
         <a href="portfolio.html" data-nav="work">Work</a>
         <a href="insights.html" data-nav="insights">Insights</a>
-        <a href="contact-form.html" class="nav-cta">Free Tech Checkup</a>
       </nav>
+      <div class="nav-cta-row">
+        <a class="btn btn-ghost btn-sm" href="tel:+13068073430">306-807-3430</a>
+        <a class="btn btn-primary btn-sm" href="contact-form.html">Free Tech Checkup</a>
+      </div>
     </div>
   </header>
 
   <main id="main">
+    <!-- ═══ PAGE HERO ═══ -->
     <section class="page-hero">
-      <div class="cyber-grid" aria-hidden="true"></div>
-      <div class="hero-aurora" aria-hidden="true"><span></span><span></span><span></span></div>
-      <div class="floating-shapes" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-      <div class="wrap">
-        <div class="eyebrow light"><span></span>Industry playbooks</div>
-        <h1>Technology plans matched to how your business actually works.</h1>
-        <p class="lead">Different teams have different risks, tools and customer expectations. We build technology plans that fit the way you operate — not the other way around.</p>
+      <div class="wrap page-hero-inner">
+        <span class="eyebrow">Industry playbooks</span>
+        <h1 class="display display-xl">Plans matched to how you actually work.</h1>
+        <p class="lede">Same foundations — <strong>stable IT, locked-down accounts, a website that converts</strong> — tuned to the rhythms of your industry. Pick your playbook and start with a free checkup.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-glow" href="contact-form.html?service=Free%20Technology%20Checkup"><span class="btn-inner">Get Your Industry Roadmap</span></a>
-          <a class="btn btn-outline light" href="services.html"><span class="btn-inner">View All Services</span></a>
+          <a class="btn btn-primary btn-lg" href="contact-form.html?service=Free%20Technology%20Checkup">Start my free checkup</a>
+          <a class="btn btn-ghost btn-lg" href="services.html">Browse all services</a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="industries">
+    <!-- ═══ INDUSTRY PLAYBOOKS ═══ -->
+    <section class="section" id="playbooks">
       <div class="wrap">
-        <div class="section-head center">
-          <div class="eyebrow"><span></span>Industries we support</div>
-          <h2>Focused playbooks for how your team actually works.</h2>
-          <p>Each industry has a different rhythm. We tailor our approach to match your operating environment, risk profile and growth goals.</p>
+        <div class="section-head reveal">
+          <span class="eyebrow">Who we serve</span>
+          <h2 class="display display-lg">Six playbooks, one standard of care.</h2>
+          <p>Each playbook bundles the IT, security, web and automation moves that matter most for that kind of team.</p>
         </div>
-        <div class="services-grid industries-grid">
-          <article class="service-card">
-            <div class="service-icon"><span>CLN</span></div>
-            <h3>Clinics & Healthcare Offices</h3>
-            <p>Protect patient trust with account controls, backup readiness, secure devices and reliable front-desk workflows.</p>
-            <ul class="card-ul"><li>Email and identity security</li><li>Device and printer support</li><li>Backup and recovery planning</li></ul>
-            <a class="contact-link" href="contact-form.html?service=CyberShield%20Review">Review clinic risk →</a>
+        <div class="bento">
+          <article class="card span-2 reveal">
+            <div class="icon">MED</div>
+            <h3>Clinics</h3>
+            <p>Calm front desks, protected patient information, and reminders that cut no-shows — without disrupting care.</p>
+            <ul><li>Account and device hygiene</li><li>Backup and recovery planning</li><li>Appointment reminders</li></ul>
+            <a class="card-link" href="contact-form.html?service=Free%20Technology%20Checkup">Talk about your clinic →</a>
           </article>
-          <article class="service-card">
-            <div class="service-icon"><span>TRD</span></div>
-            <h3>Trades & Construction</h3>
-            <p>Keep field teams connected with better email, file access, quoting workflows and practical device support.</p>
-            <ul class="card-ul"><li>Mobile-friendly systems</li><li>Website lead capture</li><li>Cloud file organization</li></ul>
-            <a class="contact-link" href="contact-form.html?service=Website%20Growth%20Care">Win better leads →</a>
+          <article class="card span-2 reveal">
+            <div class="icon">TRD</div>
+            <h3>Trades</h3>
+            <p>Office-to-job-site systems that survive the real world: reachable files, working phones, quotes that go out fast.</p>
+            <ul><li>Remote and job-site access</li><li>Quote and invoice flow</li><li>Device and account setup</li></ul>
+            <a class="card-link" href="contact-form.html?service=Free%20Technology%20Checkup">Talk about your crew →</a>
           </article>
-          <article class="service-card">
-            <div class="service-icon"><span>PRO</span></div>
+          <article class="card span-2 reveal">
+            <div class="icon">PRO</div>
             <h3>Professional Services</h3>
-            <p>Improve client confidence with polished web presence, Microsoft 365 cleanup and secure document handling.</p>
-            <ul class="card-ul"><li>Microsoft 365 governance</li><li>Client intake workflows</li><li>Website trust signals</li></ul>
-            <a class="contact-link" href="contact-form.html?service=Managed%20IT%20Essentials">Plan support →</a>
+            <p>Polished client experience from first click to final invoice: sharp website, clean files, smooth intake.</p>
+            <ul><li>Website clarity and capture</li><li>Microsoft 365 cleanup</li><li>Client intake automation</li></ul>
+            <a class="card-link" href="contact-form.html?service=Free%20Technology%20Checkup">Talk about your firm →</a>
           </article>
-          <article class="service-card">
-            <div class="service-icon"><span>NFP</span></div>
-            <h3>Nonprofits & Community Teams</h3>
-            <p>Make limited budgets go further with clear priorities, documented systems and easy-to-maintain tools.</p>
-            <ul class="card-ul"><li>Vendor and account inventory</li><li>Security basics</li><li>Practical roadmap planning</li></ul>
-            <a class="contact-link" href="contact-form.html?service=Free%20Technology%20Checkup">Build a roadmap →</a>
+          <article class="card span-2 reveal">
+            <div class="icon">NPO</div>
+            <h3>Nonprofits</h3>
+            <p>Stretch every dollar: donated-tech friendly setups, volunteer-proof docs, and grant-ready reporting.</p>
+            <ul><li>Low-cost tooling guidance</li><li>Volunteer onboarding docs</li><li>Donor and program reporting</li></ul>
+            <a class="card-link" href="contact-form.html?service=Free%20Technology%20Checkup">Talk about your mission →</a>
           </article>
-          <article class="service-card">
-            <div class="service-icon"><span>RTL</span></div>
-            <h3>Retail & Restaurants</h3>
-            <p>Support daily operations with dependable Wi-Fi, website clarity, forms, printers and recovery planning.</p>
-            <ul class="card-ul"><li>Network and device support</li><li>Website updates</li><li>Backup readiness</li></ul>
-            <a class="contact-link" href="contact-form.html?service=Urgent%20IT%20Support%20/%20Troubleshooting">Fix recurring issues →</a>
+          <article class="card span-2 reveal">
+            <div class="icon">RTL</div>
+            <h3>Retail and Restaurants</h3>
+            <p>Wi-Fi that holds up at rush hour, menus and listings that stay current, and reviews that get answered.</p>
+            <ul><li>Guest and POS network separation</li><li>Listings and menu updates</li><li>Review and inbox routines</li></ul>
+            <a class="card-link" href="contact-form.html?service=Free%20Technology%20Checkup">Talk about your venue →</a>
           </article>
-          <article class="service-card featured-card">
-            <div class="service-icon"><span>AI</span></div>
-            <h3>Automation Opportunities</h3>
-            <p>Across every industry, the easiest wins usually start with intake, follow-up, reporting, reminders and knowledge lookup.</p>
-            <ul class="card-ul"><li>Map the repetitive work</li><li>Estimate saved hours</li><li>Build safe handoff steps</li></ul>
-            <a class="btn btn-primary btn-glow full-btn" href="contact-form.html?service=AI%20Automation%20Sprint"><span class="btn-inner">Explore automation</span></a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section soft">
-      <div class="wrap">
-        <div class="section-head center">
-          <div class="eyebrow"><span></span>Common patterns across industries</div>
-          <h2>Every business benefits from the same foundations.</h2>
-          <p>Regardless of your industry, certain technology improvements deliver results across the board.</p>
-        </div>
-        <div class="services-grid services-grid-3">
-          <article class="service-card">
-            <div class="service-icon"><span>01</span></div>
-            <h3>Account Security</h3>
-            <p>Multi-factor authentication, admin access controls and leaver procedures reduce the most common risk factors.</p>
-          </article>
-          <article class="service-card">
-            <div class="service-icon"><span>02</span></div>
-            <h3>Backup Readiness</h3>
-            <p>Knowing what is backed up, how recovery works and how often testing happens removes a major source of stress.</p>
-          </article>
-          <article class="service-card">
-            <div class="service-icon"><span>03</span></div>
-            <h3>Website Clarity</h3>
-            <p>A clear website that explains services well and captures leads reliably is the cheapest marketing improvement available.</p>
+          <article class="card span-2 reveal">
+            <div class="icon">AUTO</div>
+            <h3>Operations Automation</h3>
+            <p>For teams drowning in follow-ups and data entry: one workflow mapped, then automated with safeguards.</p>
+            <ul><li>Workflow discovery session</li><li>Automation prototype plan</li><li>Handoff and human review</li></ul>
+            <a class="btn btn-primary btn-full" href="contact-form.html?service=AI%20Automation%20Sprint">Start automation</a>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section dark-section">
-      <div class="cyber-grid-light" aria-hidden="true"></div>
+    <!-- ═══ FOUNDATIONS ═══ -->
+    <section class="section" id="foundations">
       <div class="wrap">
-        <div class="cta-block" data-cta="unified">
-          <div class="cta-content" class="cta-content-grid">
-            <div>
-              <div class="eyebrow light"><span></span>Ready to build your playbook?</div>
-              <h2>Your industry deserves a technology plan that fits.</h2>
-              <p class="cta-sub">We will review your environment and build a prioritized roadmap based on how your team actually operates. No generic advice.</p>
-            </div>
-            <div>
-              <a class="btn btn-primary btn-glow full-btn" href="contact-form.html?service=Free%20Technology%20Checkup"><span class="btn-inner">Start Your Roadmap</span></a>
-              <a class="btn btn-outline light full-btn" href="tel:+13068073430" class="cta-second"><span class="btn-inner">Call 306-807-3430</span></a>
-            </div>
-          </div>
+        <div class="section-head reveal">
+          <span class="eyebrow">Under every playbook</span>
+          <h2 class="display display-lg">Three foundations, whatever you do.</h2>
+          <p>Every industry plan stands on the same three layers. Get them right once and everything else gets easier.</p>
+        </div>
+        <div class="bento">
+          <article class="card span-2 reveal">
+            <div class="icon">SEC</div>
+            <h3>Secure foundations</h3>
+            <p>MFA on key accounts, access new hires and leavers can't break, and backups with a tested restore path.</p>
+            <ul><li>MFA and account review</li><li>Joiner-leaver procedures</li><li>Backup readiness check</li></ul>
+          </article>
+          <article class="card span-2 reveal">
+            <div class="icon">WEB</div>
+            <h3>Clear website</h3>
+            <p>A site that says what you do, who it's for, and what to do next — fast on phones, with forms that reach you.</p>
+            <ul><li>Service and contact clarity</li><li>Speed and mobile checks</li><li>Lead-capture testing</li></ul>
+          </article>
+          <article class="card span-2 reveal">
+            <div class="icon">AI</div>
+            <h3>Automated busywork</h3>
+            <p>The repetitive follow-ups, reminders and data entry your team hates — mapped, then handled by the system.</p>
+            <ul><li>Repetitive-work inventory</li><li>Highest-value target first</li><li>Safeguards and review steps</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="section cta">
+      <div class="wrap cta-inner reveal">
+        <span class="eyebrow">Free business technology checkup</span>
+        <h2 class="display display-lg">Walk away with a prioritized roadmap.</h2>
+        <p class="lede">In 30 minutes we map the practical wins across IT, security, websites, Microsoft 365 and automation.</p>
+        <div class="cta-tags"><span>Quick fixes</span><span>Security gaps</span><span>Website wins</span><span>365 cleanup</span><span>Automation targets</span></div>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="contact-form.html?service=Free%20Technology%20Checkup">Book my free checkup</a>
+          <a class="btn btn-ghost btn-lg" href="tel:+13068073430">Call 306-807-3430</a>
         </div>
       </div>
     </section>
@@ -170,29 +162,32 @@
     <div class="wrap">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a class="brand" href="index.html">
-            <img src="decrux-logo-horizontal.svg?v=20260608-2" alt="Decrux Tech" width="190" height="57">
-          </a>
-          <p>Full-suite IT support, cybersecurity, websites and AI automation for Saskatchewan businesses.</p>
-          <span class="footer-locale"><span class="pulse-dot"></span> Regina, Saskatchewan</span>
+          <a class="brand" href="index.html"><img src="decrux-logo-horizontal.svg?v=20260608-2" alt="Decrux Tech" width="190" height="57"></a>
+          <p>Technology that runs itself — for Saskatchewan businesses.</p>
         </div>
         <div class="footer-col">
-          <h4>Explore</h4>
-          <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
+          <h4>Services</h4>
+          <a href="services.html#it">Managed IT</a>
+          <a href="services.html#security">Cybersecurity</a>
+          <a href="services.html#digital">Web & AI</a>
+          <a href="services.html#packages">Plans</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
           <a href="industries.html">Industries</a>
           <a href="portfolio.html">Work</a>
           <a href="insights.html">Insights</a>
+          <a href="contact-form.html">Contact</a>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
           <a href="tel:+13068073430">306-807-3430</a>
           <a href="mailto:info@decruxtech.com">info@decruxtech.com</a>
-          <a href="contact-form.html">Request Support</a>
+          <a href="contact-form.html">Request support</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 Decrux Tech. Regina, Saskatchewan.</span>
+        <span>© 2026 Decrux Tech · Regina, Saskatchewan</span>
         <span>Smarter technology. Stronger businesses.</span>
       </div>
     </div>

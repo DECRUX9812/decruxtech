@@ -1,468 +1,172 @@
-/* ══════════════════════════════════════════════════════════
-   DECRUX TECH — Immersive Experience Engine v2
-   ══════════════════════════════════════════════════════════ */
+/* DECRUX TECH v4 — vanilla interaction engine (no dependencies) */
 (function () {
   'use strict';
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ────────────────────────────
-     1. 3D PARTICLE COSMOS (Canvas)
-     ──────────────────────────── */
-  function initParticles() {
-    const canvas = document.getElementById('bg-canvas');
-    if (!canvas || reducedMotion) return;
-
-    const ctx = canvas.getContext('2d');
-    let width, height, centerX, centerY;
-    const particles = [];
-    const PARTICLE_COUNT = 160;
-    const CONNECTION_DIST = 150;
-    let mouse = { x: 0, y: 0, vx: 0, vy: 0 };
-    let frameId;
-
-    function resize() {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      centerX = width / 2;
-      centerY = height / 2;
-    }
-
-    function createParticles() {
-      particles.length = 0;
-      for (let i = 0; i < PARTICLE_COUNT; i++) {
-        const theta = Math.random() * Math.PI * 2;
-        const phi = Math.random() * Math.PI;
-        const radius = 60 + Math.random() * (Math.min(width, height) * 0.35);
-        particles.push({
-          x: centerX + radius * Math.sin(phi) * Math.cos(theta),
-          y: centerY + radius * Math.cos(phi),
-          z: radius * Math.sin(phi) * Math.sin(theta),
-          r: 0.6 + Math.random() * 1.6,
-          speedZ: 0.0002 + Math.random() * 0.0004,
-          speedAngle: (Math.random() - 0.5) * 0.002,
-          theta: theta,
-          phi: phi,
-          radius: radius,
-          baseAlpha: 0.3 + Math.random() * 0.5,
-        });
-      }
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, width, height);
-
-      // Sort by z for depth
-      particles.sort((a, b) => a.z - b.z);
-
-      // Mouse influence
-      const mdx = mouse.vx * 0.0003;
-      const mdy = mouse.vy * 0.0003;
-
-      const projected = [];
-
-      for (const p of particles) {
-        // Rotate
-        p.theta += p.speedAngle + mdx;
-        p.phi += 0.0003 + mdy;
-
-        // Sphere position
-        const r = p.radius;
-        const sx = r * Math.sin(p.phi) * Math.cos(p.theta);
-        const sy = r * Math.cos(p.phi);
-        const sz = r * Math.sin(p.phi) * Math.sin(p.theta);
-
-        p.x = centerX + sx;
-        p.y = centerY + sy;
-        p.z = sz;
-
-        // Depth-based sizing and alpha
-        const depthNorm = (p.z + r) / (2 * r);
-        const size = p.r * (0.4 + 0.6 * depthNorm);
-        const alpha = p.baseAlpha * (0.3 + 0.7 * depthNorm);
-
-        projected.push({ x: p.x, y: p.y, size, alpha, idx: projected.length });
-      }
-
-      // Draw connections (only between close particles in 2D)
-      for (let i = 0; i < projected.length; i++) {
-        for (let j = i + 1; j < projected.length; j++) {
-          const a = projected[i];
-          const b = projected[j];
-          const dx = a.x - b.x;
-          const dy = a.y - b.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < CONNECTION_DIST) {
-            const connAlpha = (1 - dist / CONNECTION_DIST) * 0.12;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(90, 180, 255, ${connAlpha})`;
-            ctx.lineWidth = 0.6;
-            ctx.stroke();
-          }
-        }
-      }
-
-      // Draw particles
-      for (const p of projected) {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(180, 240, 255, ${p.alpha})`;
-        ctx.fill();
-
-        // Glow
-        if (p.size > 1.2) {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(101, 209, 66, ${p.alpha * 0.08})`;
-          ctx.fill();
-        }
-      }
-
-      // Decay mouse velocity
-      mouse.vx *= 0.92;
-      mouse.vy *= 0.92;
-
-      frameId = requestAnimationFrame(draw);
-    }
-
-    // Track mouse for parallax
-    document.addEventListener('mousemove', (e) => {
-      mouse.vx += (e.clientX - mouse.x) * 0.01;
-      mouse.vy += (e.clientY - mouse.y) * 0.01;
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    });
-
-    resize();
-    createParticles();
-    draw();
-    window.addEventListener('resize', resize);
-    window.addEventListener('pagehide', () => cancelAnimationFrame(frameId));
-  }
-
-  /* ────────────────────────────
-     2. CUSTOM CURSOR — disabled, normal cursor on all pages
-     ──────────────────────────── */
-  function initCursor() {
-    // Normal browser cursor everywhere. No custom cursor.
-  }
-
-  /* ────────────────────────────
-     3. SCROLL PROGRESS
-     ──────────────────────────── */
-  function initScrollProgress() {
-    if (reducedMotion) return;
-    const bar = document.querySelector('.scroll-progress');
+  /* Scroll progress hairline */
+  function progress() {
+    var bar = document.querySelector('.scroll-progress');
     if (!bar) return;
-
-    function update() {
-      const scroll = window.scrollY;
-      const height = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.width = `${(scroll / height) * 100}%`;
-      requestAnimationFrame(update);
-    }
+    var update = function () {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+    };
+    window.addEventListener('scroll', update, { passive: true });
     update();
   }
 
-  /* ────────────────────────────
-     4. HEADER SCROLL EFFECT
-     ──────────────────────────── */
-  function initHeader() {
-    const header = document.getElementById('header');
-    if (!header) return;
-    let ticking = false;
-
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          header.classList.toggle('scrolled', window.scrollY > 60);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
-  }
-
-  /* ────────────────────────────
-     5. MOBILE NAV TOGGLE
-     ──────────────────────────── */
-  function initNav() {
-    const toggle = document.querySelector('.nav-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    if (!toggle || !navLinks) return;
-
-    toggle.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', String(isOpen));
+  /* Mobile nav */
+  function nav() {
+    var header = document.getElementById('header');
+    var toggle = document.querySelector('.nav-toggle');
+    if (!header || !toggle) return;
+    toggle.addEventListener('click', function () {
+      var open = header.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
     });
-
-    navLinks.addEventListener('click', (e) => {
-      if (e.target instanceof HTMLAnchorElement) {
-        navLinks.classList.remove('is-open');
+    header.querySelectorAll('.nav-links a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        header.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
-      }
+      });
+    });
+    /* Active link */
+    var file = (window.location.pathname.split('/').pop() || 'index.html').split('?')[0] || 'index.html';
+    header.querySelectorAll('.nav-links a[data-nav]').forEach(function (a) {
+      var key = a.getAttribute('data-nav');
+      if ((file === 'index.html' && key === 'home') ||
+          (file === 'services.html' && key === 'services') ||
+          (file === 'industries.html' && key === 'industries') ||
+          (file === 'portfolio.html' && key === 'work') ||
+          (file === 'insights.html' && key === 'insights')) a.classList.add('active');
     });
   }
 
-  /* ────────────────────────────
-     6. TYPEWRITER / TERMINAL
-     ──────────────────────────── */
-  function initTypewriter() {
-    if (reducedMotion) return;
-    const el = document.getElementById('typed-output');
-    if (!el) return;
-
-    const phrases = [
-      'checking identity, backups, website, workflows...',
-      'finding quick wins and revenue leaks...',
-      'building a prioritized modernization roadmap...'
-    ];
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let deleting = false;
-
-    function type() {
-      const phrase = phrases[phraseIndex];
-
-      if (!deleting) {
-        el.textContent = phrase.slice(0, charIndex + 1);
-        charIndex++;
-        if (charIndex >= phrase.length) {
-          deleting = true;
-          setTimeout(type, 1800);
-          return;
-        }
-        setTimeout(type, 32 + Math.random() * 20);
-      } else {
-        el.textContent = phrase.slice(0, charIndex);
-        charIndex--;
-        if (charIndex <= 0) {
-          deleting = false;
-          phraseIndex = (phraseIndex + 1) % phrases.length;
-          setTimeout(type, 300);
-          return;
-        }
-        setTimeout(type, 16);
-      }
+  /* Reveal on scroll */
+  function reveal() {
+    var els = document.querySelectorAll('.reveal');
+    if (!els.length) return;
+    if (!('IntersectionObserver' in window) || reduced) {
+      els.forEach(function (el) { el.classList.add('in'); });
+      return;
     }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+    els.forEach(function (el, i) {
+      el.style.transitionDelay = ((i % 6) * 60) + 'ms';
+      io.observe(el);
+    });
+  }
+
+  /* Animated counters */
+  function counters() {
+    var nums = document.querySelectorAll('[data-count]');
+    if (!nums.length) return;
+    var run = function (el) {
+      var target = parseFloat(el.getAttribute('data-count'));
+      if (reduced) { el.firstChild.nodeValue = String(target); return; }
+      var t0 = performance.now(), dur = 1400;
+      var tick = function (t) {
+        var p = Math.min((t - t0) / dur, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.firstChild.nodeValue = String(Math.round(eased * target));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    if (!('IntersectionObserver' in window)) { nums.forEach(run); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { run(e.target); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.4 });
+    nums.forEach(function (el) { io.observe(el); });
+  }
+
+  /* Panel bars animate in */
+  function bars() {
+    var bars = document.querySelectorAll('.bar i[data-w]');
+    if (!bars.length) return;
+    var run = function () {
+      bars.forEach(function (b) { b.style.width = b.getAttribute('data-w') + '%'; });
+    };
+    if (reduced) { run(); return; }
+    setTimeout(run, 350);
+  }
+
+  /* Terminal typewriter */
+  function term() {
+    var el = document.getElementById('typed');
+    if (!el || reduced) return;
+    var phrases = [
+      'scan identity → 4 gaps found',
+      'scan backups → recovery plan drafted',
+      'scan website → 2 conversion leaks found',
+      'roadmap ready — 3 quick wins queued'
+    ];
+    var pi = 0, ci = 0, del = false;
+    var type = function () {
+      var phrase = phrases[pi];
+      if (!del) {
+        el.textContent = phrase.slice(0, ci + 1); ci++;
+        if (ci >= phrase.length) { del = true; setTimeout(type, 1700); return; }
+        setTimeout(type, 28 + Math.random() * 24);
+      } else {
+        el.textContent = phrase.slice(0, ci); ci--;
+        if (ci <= 0) { del = false; pi = (pi + 1) % phrases.length; setTimeout(type, 320); return; }
+        setTimeout(type, 14);
+      }
+    };
     type();
   }
 
-  /* ────────────────────────────
-     7. COMMAND PANEL 3D TILT
-     ──────────────────────────── */
-  function initPanelTilt() {
-    if (reducedMotion) return;
-    const panel = document.querySelector('.command-panel');
-    if (!panel) return;
-
-    panel.addEventListener('pointermove', (e) => {
-      const rect = panel.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      panel.style.transform = `rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
-    });
-
-    panel.addEventListener('pointerleave', () => {
-      panel.style.transform = '';
-    });
-  }
-
-  /* ────────────────────────────
-     8. SCROLL REVEAL ANIMATIONS
-     ──────────────────────────── */
-  function initScrollReveal() {
-    if (!('IntersectionObserver' in window)) return;
-
-    const selectors = [
-      '.section-head', '.service-card', '.roi-card', '.case-card',
-      '.trust-card', '.stat-item', '.score-card', '.calculator-card',
-      '.cta-block', '.hero-copy', '.command-panel', '.page-hero .wrap', '.footer'
-    ];
-    const targets = document.querySelectorAll(selectors.join(','));
-    if (!targets.length) return;
-
-    // Add animation classes
-    targets.forEach((el, i) => {
-      if (el.classList.contains('hero-copy') || el.classList.contains('command-panel')) return;
-      el.classList.add('animate-fade');
-      el.style.transitionDelay = `${(i % 8) * 50}ms`;
-    });
-
-    // Animate hero elements directly
-    const heroEls = document.querySelectorAll('.hero-copy > *');
-    heroEls.forEach((el, i) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-    });
-
-    // Fade in hero immediately
-    setTimeout(() => {
-      heroEls.forEach((el, i) => {
-        el.style.transition = `opacity 0.6s ease ${0.1 + i * 0.08}s, transform 0.6s ease ${0.1 + i * 0.08}s`;
-        el.style.opacity = '1';
-        el.style.transform = 'translateY(0)';
-      });
-    }, 200);
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-    targets.forEach((target) => {
-      if (target.classList.contains('hero-copy') || target.classList.contains('command-panel')) return;
-      observer.observe(target);
-    });
-  }
-
-  /* ────────────────────────────
-     9. ANIMATED COUNTERS
-     ──────────────────────────── */
-  function initCounters() {
-    const counters = document.querySelectorAll('.counter');
-    if (!counters.length) return;
-
-    counters.forEach((counter) => {
-      const target = parseInt(counter.dataset.target, 10);
-      counter.textContent = '0';
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          observer.unobserve(counter);
-
-          if (reducedMotion) {
-            counter.textContent = target;
-            return;
-          }
-
-          const duration = 1500 + Math.random() * 800;
-          const start = performance.now();
-
-          function update(now) {
-            const elapsed = now - start;
-            const progress = Math.min(elapsed / duration, 1);
-            // Ease out cubic
-            const eased = 1 - Math.pow(1 - progress, 3);
-            const current = Math.round(eased * target);
-
-            if (target <= 3) {
-              counter.textContent = current;
-            } else {
-              counter.textContent = current;
-              // Add + suffix for some
-              if (current >= target && target > 1) counter.textContent = `${target}+`;
-            }
-
-            if (progress < 1) {
-              requestAnimationFrame(update);
-            } else {
-              counter.textContent = target > 1 ? `${target}+` : String(target);
-            }
-          }
-          requestAnimationFrame(update);
-        });
-      }, { threshold: 0.3 });
-
-      observer.observe(counter);
-    });
-  }
-
-  /* ────────────────────────────
-     10. RISK SCORE
-     ──────────────────────────── */
-  function initRiskScore() {
-    const form = document.getElementById('risk-score');
+  /* Risk score ring */
+  function risk() {
+    var form = document.getElementById('risk-score');
     if (!form) return;
-
-    const scoreValue = document.getElementById('score-value');
-    const scoreField = document.getElementById('score-field');
-    const ring = document.getElementById('score-ring-progress');
-    const circumference = 2 * Math.PI * 68; // r=68
-
-    function updateScore() {
-      const checked = [...form.querySelectorAll('[data-score]:checked')];
-      const score = Math.min(100, checked.reduce((total, input) => total + Number(input.dataset.score || 0), 50));
-      if (scoreValue) scoreValue.textContent = String(score);
-      if (scoreField) scoreField.value = String(score);
-      if (ring) {
-        const offset = circumference - (score / 100) * circumference;
-        ring.style.strokeDashoffset = String(offset);
-      }
-    }
-
-    form.addEventListener('change', updateScore);
-    updateScore();
+    var val = document.getElementById('score-value');
+    var field = document.getElementById('score-field');
+    var ring = document.getElementById('score-ring');
+    var C = 2 * Math.PI * 52;
+    var update = function () {
+      var checked = form.querySelectorAll('[data-score]:checked');
+      var score = 50;
+      checked.forEach(function (c) { score += Number(c.getAttribute('data-score')); });
+      score = Math.min(100, score);
+      if (val) val.firstChild.nodeValue = String(score);
+      if (field) field.value = String(score);
+      if (ring) ring.style.strokeDashoffset = String(C - (score / 100) * C);
+    };
+    form.addEventListener('change', update);
+    update();
   }
 
-  /* ────────────────────────────
-     11. SAVINGS CALCULATOR
-     ──────────────────────────── */
-  function initSavingsCalculator() {
-    const form = document.getElementById('savings-form');
+  /* Savings calculator */
+  function calc() {
+    var form = document.getElementById('savings-form');
     if (!form) return;
-
-    const hoursInput = document.getElementById('hours-per-week');
-    const costInput = document.getElementById('hourly-cost');
-    const hoursOutput = document.getElementById('savings-hours');
-    const valueOutput = document.getElementById('savings-value');
-    const contextField = document.getElementById('savings-context');
-    const formatMoney = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD', maximumFractionDigits: 0 });
-
-    function update() {
-      const weeklyHours = Math.max(0, Number(hoursInput?.value || 0));
-      const hourlyCost = Math.max(0, Number(costInput?.value || 0));
-      const annualHours = Math.round(weeklyHours * 52 * 0.5);
-      const annualValue = annualHours * hourlyCost;
-      if (hoursOutput) hoursOutput.textContent = String(annualHours);
-      if (valueOutput) valueOutput.textContent = formatMoney.format(annualValue);
-      if (contextField) contextField.value = `${weeklyHours} hours/week at ${formatMoney.format(hourlyCost)}/hour; approx ${annualHours} hours/year reviewed`;
-    }
-
+    var hours = document.getElementById('hours-per-week');
+    var cost = document.getElementById('hourly-cost');
+    var hOut = document.getElementById('savings-hours');
+    var vOut = document.getElementById('savings-value');
+    var ctx = document.getElementById('savings-context');
+    var fmt = new Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD', maximumFractionDigits: 0 });
+    var update = function () {
+      var w = Math.max(0, Number(hours && hours.value || 0));
+      var c = Math.max(0, Number(cost && cost.value || 0));
+      var annual = Math.round(w * 52 * 0.5);
+      if (hOut) hOut.firstChild.nodeValue = String(annual);
+      if (vOut) vOut.firstChild.nodeValue = fmt.format(annual * c);
+      if (ctx) ctx.value = w + ' hrs/wk @ ' + fmt.format(c) + '/hr ≈ ' + annual + ' hrs/yr';
+    };
     form.addEventListener('input', update);
     update();
   }
 
-  /* ────────────────────────────
-     12. ACTIVE NAV (v3 unified nav)
-     ──────────────────────────── */
-  function initActiveNav() {
-    const map = { 'services.html': 'services', 'industries.html': 'industries', 'portfolio.html': 'work', 'insights.html': 'insights', 'contact-form.html': null, 'thanks.html': null };
-    const file = (window.location.pathname.split('/').pop() || 'index.html').split('?')[0] || 'index.html';
-    const key = map[file];
-    if (!key) return;
-    document.querySelectorAll('.nav-links a[data-nav]').forEach((a) => {
-      if (a.dataset.nav === key) a.classList.add('active');
-    });
-  }
-
-  /* ────────────────────────────
-     INIT
-     ──────────────────────────── */
-  document.addEventListener('DOMContentLoaded', () => {
-    initParticles();
-    initCursor();
-    initScrollProgress();
-    initHeader();
-    initNav();
-    initTypewriter();
-    initPanelTilt();
-    initScrollReveal();
-    initCounters();
-    initRiskScore();
-    initSavingsCalculator();
-    initActiveNav();
+  document.addEventListener('DOMContentLoaded', function () {
+    progress(); nav(); reveal(); counters(); bars(); term(); risk(); calc();
   });
-
 })();
