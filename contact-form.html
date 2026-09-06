@@ -14,9 +14,11 @@
   <link rel="icon" href="decrux-icon.svg?v=20260608-2" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=4">
-  <script defer src="app.js?v=4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=5">
+  <script defer src="app.js?v=5"></script>
+  <script>setTimeout(function(){document.body.classList.add("loaded")},2500)</script>
+  <noscript><style>.reveal,.hero-copy .pill,.hero-copy .lede,.hero-actions,.hero-meta,.hero .panel,.kinetic .wi{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"></div>
@@ -27,21 +29,33 @@
       <a class="brand" href="index.html" aria-label="Decrux Tech home">
         <img src="decrux-logo-horizontal.svg?v=20260608-2" alt="Decrux Tech" width="190" height="57">
       </a>
-      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="services.html" data-nav="services">Services</a>
-        <a href="industries.html" data-nav="industries">Industries</a>
-        <a href="portfolio.html" data-nav="work">Work</a>
-        <a href="insights.html" data-nav="insights">Insights</a>
+        <a href="services.html" data-nav="services"><span>Services</span></a>
+        <a href="industries.html" data-nav="industries"><span>Industries</span></a>
+        <a href="portfolio.html" data-nav="work"><span>Work</span></a>
+        <a href="insights.html" data-nav="insights"><span>Insights</span></a>
       </nav>
       <div class="nav-cta-row">
         <a class="btn btn-ghost btn-sm" href="tel:+13068073430">306-807-3430</a>
-        <a class="btn btn-primary btn-sm" href="contact-form.html">Free Tech Checkup</a>
+        <a class="btn btn-primary btn-sm magnetic" href="contact-form.html"><span>Free Tech Checkup</span></a>
       </div>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <nav class="drawer-links" aria-label="Mobile navigation">
+      <a href="services.html">Services</a>
+      <a href="industries.html">Industries</a>
+      <a href="portfolio.html">Work</a>
+      <a href="insights.html">Insights</a>
+    </nav>
+    <div class="drawer-foot">
+      <a class="btn btn-primary btn-lg btn-full" href="contact-form.html">Free Tech Checkup</a>
+      <a class="drawer-phone" href="tel:+13068073430">Call 306-807-3430</a>
+    </div>
+  </div>
   <main id="main">
     <section class="page-hero">
       <div class="wrap page-hero-inner">

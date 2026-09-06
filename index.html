@@ -14,9 +14,18 @@
   <link rel="icon" href="decrux-icon.svg?v=20260608-2" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=4">
-  <script defer src="app.js?v=4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=5">
+  <script defer src="app.js?v=5"></script>
+  <script>setTimeout(function(){document.body.classList.add("loaded")},2500)</script>
+  <noscript><style>.reveal,.hero-copy .pill,.hero-copy .lede,.hero-actions,.hero-meta,.hero .panel,.kinetic .wi{opacity:1!important;transform:none!important}</style></noscript>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"LocalBusiness","name":"Decrux Tech",
+  "description":"Managed IT, cybersecurity, websites, Microsoft 365 and AI automation for Saskatchewan businesses.",
+  "url":"https://decruxtech.com/","telephone":"+1-306-807-3430","email":"info@decruxtech.com",
+  "address":{"@type":"PostalAddress","addressLocality":"Regina","addressRegion":"SK","addressCountry":"CA"},
+  "priceRange":"$$","openingHours":"Mo-Fr 09:00-17:00"}
+  </script>
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"></div>
@@ -27,29 +36,43 @@
       <a class="brand" href="index.html" aria-label="Decrux Tech home">
         <img src="decrux-logo-horizontal.svg?v=20260608-2" alt="Decrux Tech" width="190" height="57">
       </a>
-      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="services.html" data-nav="services">Services</a>
-        <a href="industries.html" data-nav="industries">Industries</a>
-        <a href="portfolio.html" data-nav="work">Work</a>
-        <a href="insights.html" data-nav="insights">Insights</a>
+        <a href="services.html" data-nav="services"><span>Services</span></a>
+        <a href="industries.html" data-nav="industries"><span>Industries</span></a>
+        <a href="portfolio.html" data-nav="work"><span>Work</span></a>
+        <a href="insights.html" data-nav="insights"><span>Insights</span></a>
       </nav>
       <div class="nav-cta-row">
         <a class="btn btn-ghost btn-sm" href="tel:+13068073430">306-807-3430</a>
-        <a class="btn btn-primary btn-sm" href="contact-form.html">Free Tech Checkup</a>
+        <a class="btn btn-primary btn-sm magnetic" href="contact-form.html"><span>Free Tech Checkup</span></a>
       </div>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <nav class="drawer-links" aria-label="Mobile navigation">
+      <a href="services.html">Services</a>
+      <a href="industries.html">Industries</a>
+      <a href="portfolio.html">Work</a>
+      <a href="insights.html">Insights</a>
+    </nav>
+    <div class="drawer-foot">
+      <a class="btn btn-primary btn-lg btn-full" href="contact-form.html">Free Tech Checkup</a>
+      <a class="drawer-phone" href="tel:+13068073430">Call 306-807-3430</a>
+    </div>
+  </div>
 
   <main id="main">
     <!-- ═══ HERO ═══ -->
     <section class="hero">
+      <canvas id="aurora" aria-hidden="true"></canvas>
+      <div class="grain" aria-hidden="true"></div>
       <div class="wrap hero-inner">
         <div class="hero-copy">
           <span class="pill"><span class="dot dot-pulse"></span> Regina technology partner · Now booking checkups</span>
-          <h1 class="display display-xl">Technology that runs itself.</h1>
+          <h1 class="display display-xl kinetic" data-split>Technology that <span class="grad">runs itself.</span></h1>
           <p class="lede">Decrux Tech builds the system around your business — <strong>reliable IT, locked-down security, a website that converts,</strong> and AI that clears the boring work off your team's plate.</p>
           <div class="hero-actions">
             <a class="btn btn-primary btn-lg" href="contact-form.html?service=Technology%20Checkup">Start my free checkup</a>
@@ -62,7 +85,7 @@
           </div>
         </div>
         <aside class="panel" aria-label="Decrux live business scan">
-          <div class="panel-bar">
+                    <div class="panel-bar">
             <span class="traffic"><i></i><i></i><i></i></span>
             <span>decrux — business scan</span>
           </div>
@@ -246,6 +269,23 @@
             <ul><li>Workflow discovery</li><li>Prototype plan</li><li>Handoff & safeguards</li></ul>
             <a class="btn btn-ghost btn-full" href="contact-form.html?service=AI%20Automation%20Sprint">Start automation</a>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ ═══ -->
+    <section class="section" id="faq">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">Straight answers</span>
+          <h2 class="display display-lg">Asked before you ask.</h2>
+        </div>
+        <div class="faq">
+          <details class="faq-item reveal" open><summary>What does the checkup actually cost?<span class="faq-x"></span></summary><p>Nothing. Thirty minutes, a prioritized roadmap, yours to keep — whether or not we ever work together.</p></details>
+          <details class="faq-item reveal"><summary>How fast do you respond?<span class="faq-x"></span></summary><p>Every inquiry gets a human reply within one business day. Urgent outages: call <a href="tel:+13068073430">306-807-3430</a> and skip the queue.</p></details>
+          <details class="faq-item reveal"><summary>Are we too small for this?<span class="faq-x"></span></summary><p>If you have 1+ computers and depend on them, you're big enough. Most clients are 1–50 people.</p></details>
+          <details class="faq-item reveal"><summary>Do we have to sign a contract?<span class="faq-x"></span></summary><p>No. Start with one fix or one review. Monthly plans exist when you want predictable support — cancel anytime.</p></details>
+          <details class="faq-item reveal"><summary>Can you work with our current IT person?<span class="faq-x"></span></summary><p>Yes — we backstop, document, and handle overflow. Many engagements start exactly this way.</p></details>
         </div>
       </div>
     </section>
