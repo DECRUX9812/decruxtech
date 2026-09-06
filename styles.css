@@ -1059,3 +1059,58 @@ a, button, .service-card, .roi-card, .case-card, .plan-card, .trust-card, .score
   .cta-features span { font-size: .74rem; }
   .cta-note { font-size: .78rem; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   DECRUX TECH — Unified Design System v3 (same-DNA unification)
+   - Unified CTA grid (replaces inline-style hacks)
+   - Unified footer locale badge, active nav state
+   - Mobile polish: 1040 / 780 / 520 breakpoints for new classes
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Unified CTA (class-based, no inline styles) ── */
+[data-cta="unified"] { border: none !important; box-shadow: none !important; background: transparent !important; padding: 0 !important; }
+.cta-content-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: center; }
+.cta-block h2 { color: #fff; margin: 14px 0; }
+.cta-sub { color: var(--muted); }
+.cta-second { margin-top: 10px; }
+
+/* ── Footer locale badge ── */
+.footer-locale { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; font-size: .82rem; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; background: rgba(255,255,255,.03); }
+
+/* ── Active nav state ── */
+.nav-links a.active { color: #fff; }
+.nav-links a.active::after { content: ""; display: block; height: 2px; border-radius: 2px; margin-top: 2px; background: linear-gradient(90deg, var(--green), var(--blue)); box-shadow: 0 0 8px var(--blue); }
+
+/* ── Scroll reveal base (JS adds .show) ── */
+.animate-fade { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.animate-fade.show { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .animate-fade { opacity: 1; transform: none; transition: none; } }
+
+/* ── Responsive: unified CTA + footer + hero ── */
+@media (max-width: 1040px) {
+  .cta-content-grid { grid-template-columns: 1fr; gap: 20px; }
+}
+@media (max-width: 780px) {
+  .cta-content-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 22px; }
+  .services-grid-3, .services-grid, .industries-grid, .cases-grid, .roi-grid, .trust-grid, .plans-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .page-hero h1, .hero-title { font-size: clamp(1.9rem, 8vw, 2.4rem); line-height: 1.12; }
+  .page-hero .lead, .hero-lead { font-size: 1rem; }
+  .hero-actions .btn, .page-hero .btn { width: 100%; justify-content: center; }
+  .topbar .wrap { flex-direction: column; gap: 4px; text-align: center; padding: 8px 16px; }
+  .footer-bottom { flex-direction: column; gap: 4px; text-align: center; }
+  .cta-block { padding: 0 4px; }
+}
+
+/* ── Touch polish ── */
+@media (hover: none), (pointer: coarse) {
+  .btn:active, .service-card:active, .case-card:active { transform: scale(.97); }
+  * { -webkit-tap-highlight-color: transparent; }
+}
+.field input, .field select, .field textarea { font-size: 16px; }
+
+/* LEGACY COMPAT: old inline CTA wrappers render identically under v3 */
+.cta-content[style] { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: center; }
+@media (max-width: 780px) { .cta-content[style] { grid-template-columns: 1fr; } }

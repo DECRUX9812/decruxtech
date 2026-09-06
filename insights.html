@@ -6,21 +6,48 @@
   <title>Technology Insights | Decrux Tech</title>
   <meta name="description" content="Plain-language technology checklists and practical guidance for Regina and Saskatchewan businesses.">
   <meta name="theme-color" content="#02050e">
-  <link rel="canonical" href="https://decruxtech.com/insights.html">
+    <link rel="canonical" href="https://decruxtech.com/insights.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Decrux Tech">
+  <meta property="og:title" content="Technology Insights | Decrux Tech">
+  <meta property="og:url" content="https://decruxtech.com/insights.html">
   <link rel="icon" href="decrux-icon.svg?v=20260608-2" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..950&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="app.js"></script>
+  <link rel="stylesheet" href="styles.css?v=3">
+  <script defer src="app.js?v=3"></script>
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"></div>
+  <!-- Background cosmos -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <div class="topbar"><div class="wrap"><span class="topbar-badge"><span class="pulse-dot"></span>Practical technology guidance for Saskatchewan businesses</span><span class="topbar-contact"><a href="tel:+130****3430">306-807-3430</a> · <a href="mailto:info@decruxtech.com">info@decruxtech.com</a></span></div></div>
+  <div class="topbar">
+    <div class="wrap">
+      <span class="topbar-badge"><span class="pulse-dot"></span> Regina technology partner for modern operators</span>
+      <span class="topbar-contact"><a href="tel:+13068073430">306-807-3430</a> · <a href="mailto:info@decruxtech.com">info@decruxtech.com</a></span>
+    </div>
+  </div>
 
-  <header class="site-header" id="header"><div class="wrap nav"><a class="brand" href="index.html" aria-label="Decrux Tech home"><img src="decrux-logo-horizontal.svg?v=20260608-2" alt="Decrux Tech" width="190" height="57"></a><button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button><nav class="nav-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="services.html">Services</a><a href="industries.html">Industries</a><a href="#resources">Resources</a><a href="contact-form.html" class="nav-cta">Free Tech Checkup</a></nav></div></header>
+  <header class="site-header" id="header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="Decrux Tech home">
+        <img src="decrux-logo-horizontal.svg?v=20260608-2" alt="Decrux Tech" width="190" height="57">
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="services.html" data-nav="services">Services</a>
+        <a href="industries.html" data-nav="industries">Industries</a>
+        <a href="portfolio.html" data-nav="work">Work</a>
+        <a href="insights.html" data-nav="insights">Insights</a>
+        <a href="contact-form.html" class="nav-cta">Free Tech Checkup</a>
+      </nav>
+    </div>
+  </header>
 
   <main id="main">
     <section class="page-hero">
@@ -101,16 +128,16 @@
     <section class="section dark-section">
       <div class="cyber-grid-light" aria-hidden="true"></div>
       <div class="wrap">
-        <div class="cta-block" style="border:none;box-shadow:none;background:transparent;padding:0">
-          <div class="cta-content" style="display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center">
+        <div class="cta-block" data-cta="unified">
+          <div class="cta-content" class="cta-content-grid">
             <div>
               <div class="eyebrow light"><span></span>Want a real review of your environment?</div>
-              <h2 style="color:#fff;margin:14px 0">We can help you identify the highest-impact improvements.</h2>
-              <p style="color:var(--muted)">IT, security, website and workflow — we look at the full picture and tell you what matters most.</p>
+              <h2>We can help you identify the highest-impact improvements.</h2>
+              <p class="cta-sub">IT, security, website and workflow — we look at the full picture and tell you what matters most.</p>
             </div>
             <div>
               <a class="btn btn-primary btn-glow full-btn" href="contact-form.html"><span class="btn-inner">Book a Checkup</span></a>
-              <a class="btn btn-outline light full-btn" href="tel:+130****3430" style="margin-top:10px"><span class="btn-inner">Call 306-807-3430</span></a>
+              <a class="btn btn-outline light full-btn" href="tel:+13068073430" class="cta-second"><span class="btn-inner">Call 306-807-3430</span></a>
             </div>
           </div>
         </div>
@@ -118,6 +145,36 @@
     </section>
   </main>
 
-  <footer class="footer"><div class="wrap"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="index.html"><img src="decrux-logo-horizontal.svg?v=20260608-2" alt="Decrux Tech" width="190" height="57"></a><p>Full-suite IT support, cybersecurity, websites and AI automation for Saskatchewan businesses.</p></div><div class="footer-col"><h4>Explore</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="industries.html">Industries</a><a href="portfolio.html">About the Work</a></div><div class="footer-col"><h4>Contact</h4><a href="tel:+130****3430">306-807-3430</a><a href="mailto:info@decruxtech.com">info@decruxtech.com</a><a href="contact-form.html">Request Support</a></div></div><div class="footer-bottom"><span>© 2026 Decrux Tech. Regina, Saskatchewan.</span><span>Smarter technology. Stronger businesses.</span></div></div></footer>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <img src="decrux-logo-horizontal.svg?v=20260608-2" alt="Decrux Tech" width="190" height="57">
+          </a>
+          <p>Full-suite IT support, cybersecurity, websites and AI automation for Saskatchewan businesses.</p>
+          <span class="footer-locale"><span class="pulse-dot"></span> Regina, Saskatchewan</span>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="industries.html">Industries</a>
+          <a href="portfolio.html">Work</a>
+          <a href="insights.html">Insights</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="tel:+13068073430">306-807-3430</a>
+          <a href="mailto:info@decruxtech.com">info@decruxtech.com</a>
+          <a href="contact-form.html">Request Support</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Decrux Tech. Regina, Saskatchewan.</span>
+        <span>Smarter technology. Stronger businesses.</span>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

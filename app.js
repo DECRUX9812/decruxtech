@@ -283,7 +283,7 @@
     const selectors = [
       '.section-head', '.service-card', '.roi-card', '.case-card',
       '.trust-card', '.stat-item', '.score-card', '.calculator-card',
-      '.cta-block', '.hero-copy', '.command-panel'
+      '.cta-block', '.hero-copy', '.command-panel', '.page-hero .wrap', '.footer'
     ];
     const targets = document.querySelectorAll(selectors.join(','));
     if (!targets.length) return;
@@ -435,6 +435,19 @@
   }
 
   /* ────────────────────────────
+     12. ACTIVE NAV (v3 unified nav)
+     ──────────────────────────── */
+  function initActiveNav() {
+    const map = { 'services.html': 'services', 'industries.html': 'industries', 'portfolio.html': 'work', 'insights.html': 'insights', 'contact-form.html': null, 'thanks.html': null };
+    const file = (window.location.pathname.split('/').pop() || 'index.html').split('?')[0] || 'index.html';
+    const key = map[file];
+    if (!key) return;
+    document.querySelectorAll('.nav-links a[data-nav]').forEach((a) => {
+      if (a.dataset.nav === key) a.classList.add('active');
+    });
+  }
+
+  /* ────────────────────────────
      INIT
      ──────────────────────────── */
   document.addEventListener('DOMContentLoaded', () => {
@@ -449,6 +462,7 @@
     initCounters();
     initRiskScore();
     initSavingsCalculator();
+    initActiveNav();
   });
 
 })();
