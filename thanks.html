@@ -3,36 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thanks | Decrux Tech</title>
-  <meta name="description" content="Thank you for contacting Decrux Tech.">
-  <meta name="theme-color" content="#02050e">
+  <title>Thanks — Decrux Tech</title>
+  <meta name="description" content="Thanks for contacting Decrux Tech. We respond within one business day.">
+  <meta name="theme-color" content="#060609">
   <link rel="canonical" href="https://decruxtech.com/thanks.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Decrux Tech">
+  <meta property="og:title" content="Thanks — Decrux Tech">
+  <meta property="og:url" content="https://decruxtech.com/thanks.html">
   <link rel="icon" href="decrux-icon.svg?v=20260608-2" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..950&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="app.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=6">
+  <script defer src="app.js?v=6"></script>
+  <script>setTimeout(function(){document.body.classList.add("loaded")},2500)</script>
+  <noscript><style>.rise,.reveal{opacity:1!important;transform:none!important}#sky{display:none}.hero-fallback{display:block}</style></noscript>
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header" id="header"><div class="wrap nav"><a class="brand" href="index.html" aria-label="Decrux Tech home"><img src="decrux-logo-horizontal.svg?v=20260608-2" alt="Decrux Tech" width="190" height="57"></a><button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button><nav class="nav-links" aria-label="Main navigation"><a href="index.html">Home</a><a href="services.html">Services</a><a href="contact-form.html" class="nav-cta">Contact</a></nav></div></header>
-
-  <main id="main" class="wrap" style="min-height:70vh;display:flex;align-items:center">
-    <section class="success-card" style="width:100%">
-      <div class="success-icon">✓</div>
-      <div class="eyebrow"><span></span>Request received</div>
-      <h1 style="font-size:clamp(2.2rem,5vw,3.6rem);margin:10px auto 16px;color:var(--ink)">Thanks for reaching out.</h1>
-      <p>We have received your request and will review it shortly. If the issue is urgent, call <a href="tel:+130****3430" style="color:var(--blue-2);font-weight:900">306-807-3430</a>.</p>
-      <div class="hero-actions" style="justify-content:center">
-        <a class="btn btn-primary btn-glow" href="index.html"><span class="btn-inner">Back to Home</span></a>
-        <a class="btn btn-outline" href="services.html"><span class="btn-inner">View Services</span></a>
+  <header class="site-header" id="header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="Decrux Tech home">
+        <img src="decrux-logo-horizontal.svg?v=20260608-2" alt="Decrux Tech" width="190" height="57">
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="services.html" data-nav="services">Services</a>
+        <a href="industries.html" data-nav="industries">Industries</a>
+        <a href="portfolio.html" data-nav="work">Work</a>
+        <a href="insights.html" data-nav="insights">Insights</a>
+      </nav>
+      <div class="nav-cta-row">
+        <a class="nav-phone" href="tel:+13068073430">306-807-3430</a>
+        <a class="btn btn-fire btn-sm" href="contact-form.html">Free checkup</a>
+      </div>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <nav class="drawer-links" aria-label="Mobile navigation">
+      <a href="services.html">Services</a>
+      <a href="industries.html">Industries</a>
+      <a href="portfolio.html">Work</a>
+      <a href="insights.html">Insights</a>
+    </nav>
+    <div class="drawer-foot">
+      <a class="btn btn-fire btn-full" href="contact-form.html">Free checkup</a>
+      <a class="drawer-phone" href="tel:+13068073430">Call 306-807-3430</a>
+    </div>
+  </div>
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap page-hero-in">
+        <div class="tag rise d1"><span class="ok-dot">●</span>&nbsp; Request received</div>
+        <h1 class="display display-lg rise d2">Thanks — we reply <span class="grad-fire">within one business day.</span></h1>
+        <p class="lede rise d3">Your diagnostic request is in. Urgent? Skip the queue.</p>
+        <div class="hero-actions left rise d4">
+          <a class="btn btn-fire" href="index.html">Back to home</a>
+          <a class="btn btn-ghost" href="tel:+13068073430">Call 306-807-3430</a>
+        </div>
       </div>
     </section>
   </main>
-
-  <footer class="footer"><div class="wrap"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="index.html"><img src="decrux-logo-horizontal.svg?v=20260608-2" alt="Decrux Tech" width="190" height="57"></a><p>Full-suite IT support, cybersecurity, websites and AI automation for Saskatchewan businesses.</p></div><div class="footer-col"><h4>Explore</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="industries.html">Industries</a><a href="insights.html">Insights</a></div><div class="footer-col"><h4>Contact</h4><a href="tel:+130****3430">306-807-3430</a><a href="mailto:info@decruxtech.com">info@decruxtech.com</a><a href="contact-form.html">Request Support</a></div></div><div class="footer-bottom"><span>© 2026 Decrux Tech. Regina, Saskatchewan.</span><span>Smarter technology. Stronger businesses.</span></div></div></footer>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html"><img src="decrux-logo-horizontal.svg?v=20260608-2" alt="Decrux Tech" width="190" height="57"></a>
+          <p>Technology that runs itself — for Saskatchewan businesses.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="services.html#it">Managed IT</a>
+          <a href="services.html#security">Cybersecurity</a>
+          <a href="services.html#digital">Web &amp; AI</a>
+          <a href="services.html#packages">Plans</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="industries.html">Industries</a>
+          <a href="portfolio.html">Work</a>
+          <a href="insights.html">Insights</a>
+          <a href="contact-form.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="tel:+13068073430">306-807-3430</a>
+          <a href="mailto:info@decruxtech.com">info@decruxtech.com</a>
+          <a href="contact-form.html">Request support</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Decrux Tech · Regina, Saskatchewan</span>
+        <span>Smarter technology. Stronger businesses.</span>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
