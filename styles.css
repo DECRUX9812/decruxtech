@@ -99,7 +99,7 @@ body.loaded .d1 { transition-delay: .05s; } body.loaded .d2 { transition-delay: 
 body.loaded .d3 { transition-delay: .32s; } body.loaded .d4 { transition-delay: .46s; }
 body.loaded .d5 { transition-delay: .6s; } body.loaded .d6 { transition-delay: .78s; }
 /* stats */
-.stats { display: flex; max-width: var(--narrow); margin: 68px auto 0; border: 1px solid var(--line); border-radius: 20px; background: rgba(255, 255, 255, .02); backdrop-filter: blur(8px); overflow: hidden; }
+.stats { display: flex; max-width: var(--narrow); margin: 68px auto 0; border: 1px solid var(--line); border-radius: 20px; background: rgba(255, 255, 255, .02); overflow: hidden; }
 .stat { flex: 1; padding: 26px 12px; text-align: center; border-left: 1px solid var(--line-soft); }
 .stat:first-child { border-left: 0; }
 .stat strong { display: block; font-family: var(--disp); font-size: clamp(1.75rem, 4vw, 2.75rem); letter-spacing: -.03em; color: var(--t1); }

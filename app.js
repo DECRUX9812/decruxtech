@@ -117,25 +117,6 @@
     });
   }
 
-  function term() {
-    var el = document.getElementById('typed');
-    if (!el || reduced) return;
-    var phrases = ['scan identity → 4 gaps found', 'scan backups → untested since March', 'scan website → 2 conversion leaks', 'roadmap ready — 3 quick wins queued'];
-    var pi = 0, ci = 0, del = false;
-    (function type() {
-      var ph = phrases[pi];
-      if (!del) {
-        el.textContent = ph.slice(0, ci + 1); ci++;
-        if (ci >= ph.length) { del = true; setTimeout(type, 1700); return; }
-        setTimeout(type, 30 + Math.random() * 22);
-      } else {
-        el.textContent = ph.slice(0, ci); ci--;
-        if (ci <= 0) { del = false; pi = (pi + 1) % phrases.length; setTimeout(type, 320); return; }
-        setTimeout(type, 14);
-      }
-    })();
-  }
-
   function risk() {
     var form = document.getElementById('risk-score');
     if (!form) return;
@@ -234,7 +215,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     document.body.classList.add('loaded');
     progress(); header(); drawer(); reveal(); counters();
-    magnetic(); spotlight(); marquee(); term(); risk(); calc(); aurora();
+    magnetic(); spotlight(); marquee(); risk(); calc(); aurora();
   });
   setTimeout(function () { document.body.classList.add('loaded'); }, 2500);
 })();
