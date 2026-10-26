@@ -3,821 +3,292 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Decrux Tech — Managed IT, security and automation for Saskatchewan business</title>
-<meta name="description" content="Regina-based IT partner for Saskatchewan clinics and businesses: managed support, security reviews and practical automation. Flat monthly, one partner, no tickets.">
+<title>Decrux Tech · IT, security and automation for Saskatchewan business</title>
+<meta name="description" content="Regina-based IT partner for Saskatchewan clinics and businesses: managed support, security reviews and practical automation. One partner for the whole stack, flat monthly, no tickets.">
 <meta name="theme-color" content="#FCFBF8">
 <link rel="canonical" href="https://decruxtech.com/">
-<link rel="icon" href="/decrux-icon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Decrux Tech — Your business, running itself.">
+<meta property="og:title" content="Decrux Tech · Your business, running itself.">
 <meta property="og:description" content="Managed IT, security and automation. One partner for the whole stack, in Regina, Saskatchewan.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-/* ─────────────────────────────────────────────────────────────
-   Decrux Tech — editorial instrument
-   Paper, hairline rules, one accent. Type does the work.
-   ───────────────────────────────────────────────────────────── */
-:root{
-  --paper:#FCFBF8;
-  --paper-2:#F5F2EA;
-  --ink:#14161A;
-  --ink-2:#34383F;
-  --muted:#6A7078;
-  --rule:rgba(20,22,26,.14);
-  --rule-soft:rgba(20,22,26,.08);
-  --accent:#2549C7;
-  --accent-soft:rgba(37,73,199,.08);
-  --serif:"Fraunces",ui-serif,Georgia,serif;
-  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-  --pad:clamp(20px,4.2vw,64px);
-  --max:1280px;
-}
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{
-  margin:0;background:var(--paper);color:var(--ink);
-  font-family:var(--sans);font-size:16.5px;line-height:1.6;font-weight:380;
-  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-  overflow-x:clip;
-}
-img,svg{display:block;max-width:100%}
-a{color:inherit}
-::selection{background:var(--accent);color:#fff}
-
-/* type primitives */
-.h-display{font-family:var(--serif);font-weight:400;letter-spacing:-.035em;line-height:.96;
-  font-variation-settings:"opsz" 144;text-wrap:balance}
-em{font-style:italic;font-variation-settings:"opsz" 144,"SOFT" 0}
-.eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--muted)}
-.lede{font-size:clamp(16.5px,1.35vw,19px);line-height:1.55;color:var(--ink-2);font-weight:350;max-width:56ch}
-.small{font-size:13.5px;color:var(--muted);line-height:1.5}
-
-/* shell */
-.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
-.rule{height:1px;background:var(--rule);border:0;margin:0}
-
-/* ── top bar ─────────────────────────────────────────────── */
-.topline{border-bottom:1px solid var(--rule-soft);background:var(--paper)}
-.topline .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;
-  padding-top:9px;padding-bottom:9px}
-.topline .coords{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--muted)}
-.topline .right{display:flex;align-items:center;gap:18px;font-family:var(--mono);font-size:10.5px;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.topline .dot{width:5px;height:5px;border-radius:50%;background:#1E8F63;display:inline-block;margin-right:6px}
-
-header.nav{position:sticky;top:0;z-index:60;background:rgba(252,251,248,.92);
-  backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--rule)}
-.nav .wrap{display:flex;align-items:center;gap:clamp(16px,4vw,56px);height:70px}
-.brand{display:flex;align-items:center;gap:11px;text-decoration:none;flex:0 0 auto}
-.brand .mark{width:30px;height:30px}
-.brand .word{font-family:var(--serif);font-size:19px;letter-spacing:-.02em;font-weight:500}
-.brand .word span{color:var(--muted);font-weight:400}
-nav.links{display:flex;gap:clamp(14px,2.4vw,34px);margin-left:auto}
-nav.links a{text-decoration:none;font-size:13.5px;font-weight:450;color:var(--ink-2);
-  padding:6px 0;position:relative}
-nav.links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;
-  background:var(--accent);transition:right .35s cubic-bezier(.22,1,.36,1)}
-nav.links a:hover::after,nav.links a[aria-current="page"]::after{right:0}
-nav.links a[aria-current="page"]{color:var(--ink)}
-.nav .tel{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--ink-2);
-  text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px}
-.nav .tel:hover{border-color:var(--accent);color:var(--accent)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  font-family:var(--sans);font-size:13.5px;font-weight:500;letter-spacing:.01em;
-  padding:12px 20px;border-radius:2px;text-decoration:none;border:1px solid var(--ink);
-  background:var(--ink);color:var(--paper);transition:background .25s,color .25s,transform .25s,border-color .25s;
-  min-height:44px;white-space:nowrap}
-.btn:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-1px)}
-.btn.ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
-.btn.ghost:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.btn .arw{transition:transform .3s}
-.btn:hover .arw{transform:translateX(3px)}
-.nav .btn{height:40px;padding:0 16px;font-size:13px}
-.burger{display:none;margin-left:auto;background:none;border:1px solid var(--rule);
-  border-radius:2px;width:40px;height:40px;align-items:center;justify-content:center;cursor:pointer}
-.burger span{display:block;width:15px;height:1px;background:var(--ink);position:relative}
-.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:15px;height:1px;background:var(--ink)}
-.burger span::before{top:-4px}.burger span::after{top:4px}
-
-/* ── hero ────────────────────────────────────────────────── */
-.hero{padding:clamp(36px,6vw,84px) 0 clamp(28px,4vw,44px);position:relative}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);
-  gap:clamp(28px,4vw,64px);align-items:center}
-.hero .eyebrow{margin-bottom:22px;display:flex;align-items:center;gap:12px}
-.hero .eyebrow::before{content:"";width:34px;height:1px;background:var(--accent)}
-h1.hero-title{font-size:clamp(46px,6.6vw,96px);margin:0 0 26px;color:var(--ink)}
-h1.hero-title em{color:inherit;letter-spacing:-.025em;padding-right:.04em}
-.hero .lede{margin-bottom:30px}
-.cta-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.textlink{font-size:13.5px;font-weight:500;text-decoration:none;border-bottom:1px solid var(--rule);
-  padding-bottom:3px;display:inline-flex;align-items:center;gap:7px;color:var(--ink-2);min-height:44px}
-.textlink:hover{color:var(--accent);border-color:var(--accent)}
-
-/* instrument panel */
-.panel{border:1px solid var(--rule);background:linear-gradient(180deg,#fff,#FBFAF6);
-  padding:18px 18px 12px;position:relative}
-.panel .cap{display:flex;align-items:center;justify-content:space-between;
-  font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
-  border-bottom:1px solid var(--rule-soft);padding-bottom:10px;margin-bottom:6px}
-.panel .cap b{color:var(--ink);font-weight:500}
-.panel svg{width:100%;height:auto}
-.panel .legend{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:9.5px;
-  letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--rule-soft);
-  padding-top:9px;margin-top:4px}
-.panel .legend i{width:6px;height:6px;display:inline-block;margin-right:5px;vertical-align:middle}
-.node-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;fill:#5B6169}
-.node-label.b{fill:var(--ink);font-weight:500}
-.wire{stroke:#B7BCC5;stroke-width:1.15;fill:none}
-.wire.live{stroke:var(--accent);stroke-width:1.7;stroke-dasharray:5 5;animation:flow 14s linear infinite}
-.node-ring{fill:#fff;stroke:#B7BCC5;stroke-width:1.2}
-.node-ring.core{stroke:var(--ink);stroke-width:1.8}
-@keyframes flow{to{stroke-dashoffset:-200}}
-
-/* proof strip */
-.proof{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-top:clamp(30px,4vw,56px)}
-.proof .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-.proof .item{padding:30px 24px 30px 0;border-right:1px solid var(--rule)}
-.proof .item:last-child{border-right:0}
-.proof .k{font-family:var(--serif);font-size:22px;letter-spacing:-.02em;line-height:1.15;margin-bottom:4px}
-.proof .v{font-size:12.5px;color:var(--muted);line-height:1.4}
-
-/* ── section chrome ──────────────────────────────────────── */
-section.block{padding:clamp(56px,8vw,116px) 0;border-top:1px solid var(--rule);position:relative}
-section.block:first-of-type{border-top:0}
-.sec-head{display:grid;grid-template-columns:88px minmax(0,1fr);gap:clamp(16px,3vw,40px);
-  margin-bottom:clamp(32px,4.6vw,60px);align-items:start}
-.sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--muted);
-  padding-top:10px;border-top:1px solid var(--ink);width:52px}
-.sec-title{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.2vw,58px);
-  letter-spacing:-.022em;line-height:1.06;margin:0 0 14px;max-width:22ch;text-wrap:balance}
-.sec-title em{padding-right:.03em;letter-spacing:-.012em}
-.sec-sub{max-width:54ch;color:var(--ink-2);font-size:15.5px;font-weight:350}
-.sec-head .aside{margin-left:auto;max-width:24ch;font-family:var(--mono);font-size:10.5px;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:right;line-height:1.8;
-  padding:8px 0 8px 18px;border-left:1px solid var(--rule);align-self:stretch}
-
-/* pillars */
-.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule)}
-.pillar{padding:26px 26px 30px 0;border-right:1px solid var(--rule);position:relative}
-.pillar:last-child{border-right:0;padding-right:0}
-.pillar:nth-child(2){padding-left:26px}
-.pillar:nth-child(3){padding-left:26px}
-.pillar .idx{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--muted);display:block;margin-bottom:18px}
-.pillar h3{font-family:var(--serif);font-size:clamp(23px,2.2vw,30px);font-weight:450;letter-spacing:-.022em;margin:0 0 10px}
-.pillar p{font-size:14.5px;color:var(--ink-2);margin:0 0 18px;max-width:34ch}
-.pillar ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule-soft)}
-.pillar li{font-size:13px;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--rule-soft);
-  display:flex;gap:9px;align-items:baseline}
-.pillar li:last-child{border-bottom:0}
-.pillar li::before{content:"";width:4px;height:4px;background:var(--accent);flex:0 0 auto;margin-top:6px}
-
-/* instruments */
-.tools{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.4vw,28px)}
-.tool{border:1px solid var(--rule);background:#fff;padding:clamp(20px,2.6vw,30px);position:relative;overflow:hidden}
-.tool .t-cap{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;
-  font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.tool h3{font-family:var(--serif);font-size:clamp(20px,2.1vw,26px);font-weight:450;letter-spacing:-.02em;margin:0 0 6px}
-.tool .t-sub{font-size:13.5px;color:var(--muted);margin:0 0 20px}
-
-/* risk dial */
-.dial-wrap{display:flex;align-items:center;gap:18px;margin-bottom:18px}
-.dial{position:relative;width:112px;height:112px;flex:0 0 auto}
-.dial svg{transform:rotate(-90deg)}
-.dial .val{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);
-  font-size:31px;letter-spacing:-.03em}
-.dial .val small{font-size:11px;font-family:var(--mono);color:var(--muted);display:block;text-align:center;letter-spacing:.08em}
-.dial-note{font-size:13px;color:var(--ink-2);line-height:1.45}
-.dial-note b{font-weight:550}
-.checks{display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--rule-soft)}
-.checks label{display:flex;gap:11px;align-items:flex-start;font-size:13.5px;color:var(--ink-2);
-  padding:10px 0;border-bottom:1px solid var(--rule-soft);cursor:pointer;line-height:1.4}
-.checks input{appearance:none;width:15px;height:15px;border:1px solid var(--rule);background:#fff;
-  flex:0 0 auto;margin-top:2px;position:relative;cursor:pointer;transition:background .2s,border-color .2s}
-.checks input:checked{background:var(--accent);border-color:var(--accent)}
-.checks input:checked::after{content:"";position:absolute;left:4px;top:1px;width:5px;height:9px;
-  border:1.5px solid #fff;border-top:0;border-left:0;transform:rotate(40deg)}
-.tool-foot{margin-top:18px;padding-top:16px;border-top:1px solid var(--rule-soft);
-  display:flex;justify-content:space-between;align-items:center;gap:12px}
-
-/* calculator */
-.calc-row{margin-bottom:22px}
-.calc-row .lbl{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;
-  font-size:13px;color:var(--ink-2)}
-.calc-row .lbl b{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--ink)}
-input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:2px;background:var(--rule);
-  outline:none;margin:12px 0}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;
-  background:var(--accent);cursor:pointer;border:2px solid #fff;box-shadow:0 0 0 1px var(--accent)}
-input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--accent);
-  cursor:pointer;border:2px solid #fff}
-.calc-out{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);
-  border:1px solid var(--rule);margin:22px 0 16px}
-.calc-out div{background:var(--paper);padding:14px 16px}
-.calc-out .n{font-family:var(--serif);font-size:26px;letter-spacing:-.02em;line-height:1.1}
-.calc-out .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px}
-
-/* engagements */
-.eng{border-top:1px solid var(--ink)}
-.eng .row{display:grid;grid-template-columns:44px minmax(0,1.12fr) minmax(0,.92fr) 156px;
-  gap:clamp(12px,1.8vw,24px);padding:24px 0;border-bottom:1px solid var(--rule);align-items:start;
-  text-decoration:none;color:inherit;transition:background .3s,padding-left .3s}
-.eng .row:hover{background:var(--accent-soft);padding-left:12px}
-.eng .n{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.1em;padding-top:5px}
-.eng h3{font-family:var(--serif);font-size:clamp(19px,1.9vw,24px);font-weight:450;letter-spacing:-.02em;
-  margin:0 0 4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.eng .p{font-size:13px;color:var(--muted);margin:0}
-.eng ul{list-style:none;margin:0;padding:0}
-.eng li{font-size:13px;color:var(--ink-2);padding:3px 0;display:flex;gap:8px}
-.eng li::before{content:"—";color:var(--muted);font-size:11px}
-.eng .go{align-self:center;text-align:right;font-size:12.5px;font-weight:500;color:var(--ink-2);
-  display:flex;justify-content:flex-end;align-items:center;gap:7px;min-height:44px}
-.eng .row:hover .go{color:var(--accent)}
-.tag{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--accent);border:1px solid var(--accent);padding:2px 6px;border-radius:2px;font-weight:500}
-
-/* process */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;counter-reset:s}
-.step{padding:0 26px 0 0;border-right:1px solid var(--rule);position:relative}
-.step:last-child{border-right:0}
-.step:nth-child(2),.step:nth-child(3){padding-left:26px}
-.step .bar{height:2px;background:var(--rule);margin-bottom:22px;position:relative;overflow:hidden}
-.step .bar::after{content:"";position:absolute;inset:0;background:var(--ink);transform:scaleX(0);
-  transform-origin:left;transition:transform .9s cubic-bezier(.22,1,.36,1)}
-.step.in .bar::after{transform:scaleX(1)}
-.step:nth-child(2) .bar::after{transition-delay:.12s}
-.step:nth-child(3) .bar::after{transition-delay:.24s}
-.step h3{font-family:var(--serif);font-size:clamp(20px,2vw,25px);font-weight:450;letter-spacing:-.02em;margin:0 0 8px}
-.step p{font-size:14px;color:var(--ink-2);margin:0;max-width:32ch}
-
-/* faq */
-.faq{border-top:1px solid var(--ink)}
-.faq details{border-bottom:1px solid var(--rule)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;
-  align-items:baseline;padding:20px 0;font-size:clamp(15.5px,1.6vw,18px);font-weight:450}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary .pm{font-family:var(--mono);font-size:16px;color:var(--muted);flex:0 0 auto;
-  transition:transform .3s,color .3s}
-.faq details[open] summary .pm{transform:rotate(45deg);color:var(--accent)}
-.faq .ans{padding:0 0 22px;max-width:70ch;color:var(--ink-2);font-size:15px;font-weight:350}
-.faq .ans a{color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor}
-
-/* close */
-.close{padding:clamp(64px,9vw,130px) 0;background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
-.close .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(28px,4vw,60px);align-items:start}
-.close .eyebrow{color:rgba(252,251,248,.55)}
-.close h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5.4vw,74px);letter-spacing:-.035em;
-  line-height:.98;margin:14px 0 0;color:var(--paper)}
-.close h2 em{color:#8FA8FF}
-.close p{color:rgba(252,251,248,.7);font-size:15px;margin:20px 0 0;max-width:44ch}
-.close .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-.close .btn:hover{background:#8FA8FF;border-color:#8FA8FF;color:var(--ink)}
-.close .btn.ghost{background:transparent;color:var(--paper);border-color:rgba(252,251,248,.32)}
-.close .btn.ghost:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-.close .aside{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(252,251,248,.5);line-height:2;border-left:1px solid rgba(252,251,248,.18);padding-left:18px}
-.close .aside a{color:rgba(252,251,248,.85);text-decoration:none;border-bottom:1px solid rgba(252,251,248,.3)}
-
-/* footer */
-footer.site{background:var(--ink);color:rgba(252,251,248,.6);padding:34px 0 44px;
-  border-top:1px solid rgba(252,251,248,.12);font-size:12.5px}
-footer.site .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start}
-footer.site a{color:rgba(252,251,248,.8);text-decoration:none}
-footer.site a:hover{color:#fff}
-footer.site .cols{display:flex;gap:clamp(24px,4vw,60px);flex-wrap:wrap}
-footer.site .col h4{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(252,251,248,.4);margin:0 0 8px;font-weight:500}
-footer.site .col a,footer.site .col span{display:block;padding:2px 0;font-size:12.5px}
-
-/* reveal */
-.rv{opacity:0;transform:translateY(16px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
-.rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){
-  .rv{opacity:1!important;transform:none!important;transition:none!important}
-  .wire.live{animation:none}
-  .step .bar::after{transform:scaleX(1)!important}
-}
-body.loaded .rv{opacity:1;transform:none}
-
-/* responsive */
-@media (max-width:1024px){
-  .hero .wrap{grid-template-columns:1fr;gap:36px}
-  .panel{max-width:560px}
-  .pillars{grid-template-columns:1fr}
-  .pillar{border-right:0;border-bottom:1px solid var(--rule);padding:22px 0}
-  .pillar:nth-child(2),.pillar:nth-child(3){padding-left:0}
-  .pillar:last-child{border-bottom:0}
-  .tools{grid-template-columns:1fr}
-  .eng .row{grid-template-columns:44px minmax(0,1fr) 130px}
-  .eng .row ul{display:none}
-  .close .wrap{grid-template-columns:1fr}
-  .proof .wrap{grid-template-columns:1fr 1fr}
-  .proof .item:nth-child(2){border-right:0}
-  .proof .item:nth-child(1),.proof .item:nth-child(2){border-bottom:1px solid var(--rule)}
-}
-@media (max-width:720px){
-  body{font-size:16px}
-  .panel{padding:12px}
-  .node-label{font-size:16px;letter-spacing:.06em}
-  .panel .cap{font-size:9px;letter-spacing:.08em}
-  .panel .legend{font-size:9px;gap:10px}
-  nav.links,.nav .tel{display:none}
-  .burger{display:flex}
-  nav.links.open{display:flex;position:absolute;top:70px;left:0;right:0;background:var(--paper);
-    flex-direction:column;gap:0;padding:8px var(--pad) 18px;border-bottom:1px solid var(--rule);margin-left:0}
-  nav.links.open a{padding:12px 0;border-bottom:1px solid var(--rule-soft);font-size:15px}
-  .nav .btn{display:none}
-  .sec-head{grid-template-columns:1fr}
-  .sec-num{width:100%;padding-top:0;border-top:0;margin-bottom:4px}
-  .sec-head .aside{display:none}
-  .steps{grid-template-columns:1fr}
-  .step{border-right:0;border-bottom:1px solid var(--rule);padding:0 0 22px;margin-bottom:22px}
-  .step:nth-child(2),.step:nth-child(3){padding-left:0}
-  .step:last-child{border-bottom:0;margin-bottom:0}
-  .eng .row{grid-template-columns:32px minmax(0,1fr);gap:12px}
-  .eng .go{grid-column:2;justify-content:flex-start;text-align:left}
-  .calc-out{grid-template-columns:1fr}
-  .topline .coords{display:none}
-  .topline .right{width:100%;justify-content:space-between}
-  .proof .wrap{grid-template-columns:1fr}
-  .proof .item{border-right:0;border-bottom:1px solid var(--rule);padding:18px 0}
-  .proof .item:last-child{border-bottom:0}
-}
-@media (max-width:420px){
-  h1.hero-title{font-size:40px}
-}
-</style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 
-<!-- top line: the small print a real firm carries -->
-<div class="topline">
-  <div class="wrap">
-    <span class="coords">Regina, Saskatchewan · 50.4452° N, 104.6189° W</span>
-    <span class="right">
-      <span><span class="dot"></span>Accepting clients</span>
-      <a href="tel:+13068073430" style="text-decoration:none;color:inherit">306 807 3430</a>
-    </span>
-  </div>
-</div>
+<div class="topline"><div class="wrap">
+  <span class="coords">Regina, Saskatchewan · 50.4452° N, 104.6189° W</span>
+  <span class="right"><span><span class="dot"></span>Accepting clients</span><a href="tel:+13068073430">306 807 3430</a></span>
+</div></div>
 
-<header class="nav">
-  <div class="wrap">
-    <a class="brand" href="/">
-      <img class="mark" src="/decrux-icon.svg" alt="" width="30" height="30">
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html">
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 4h9.2a12 12 0 0 1 0 24H6z" fill="currentColor"/><rect x="6" y="13.4" width="13.6" height="5.2"/></svg>
+    <span class="word">Decrux <span>Tech</span></span>
+  </a>
+  <nav class="links" id="navlinks">
+    <a href="services.html">Services</a>
+    <a href="industries.html">Industries</a>
+    <a href="portfolio.html">Proof</a>
+    <a href="insights.html">Notes</a>
+  </nav>
+  <a class="btn" href="contact-form.html">Free checkup <span class="arw">→</span></a>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span></button>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <div class="eyebrow">Sovereign IT · Regina</div>
+    <h1 class="h-display hero-title">Your business,<br><em>running itself.</em></h1>
+    <p class="lede">Decrux Tech is the IT department small Saskatchewan firms never had:
+      support that answers, security that holds, and automation that quietly deletes
+      the busywork. One partner. One flat bill.</p>
+    <div class="cta-row">
+      <a class="btn" href="contact-form.html">Start the free checkup <span class="arw">→</span></a>
+      <a class="textlink" href="#engagements">See how engagements start <span class="arw">↓</span></a>
+    </div>
+  </div>
+
+  <figure class="panel" aria-label="Diagram: how a managed stack fits together">
+    <div class="cap"><span>Fig. 01 · the stack</span><b>One accountable surface</b></div>
+    <svg viewBox="0 0 520 380" role="img" aria-label="Devices, identity, backup, network, support and reporting connected through Decrux">
+      <path class="wire" d="M96 78 H196 V160"/><path class="wire" d="M96 190 H196"/><path class="wire" d="M96 302 H196 V240"/>
+      <path class="wire live" d="M196 160 H300 V200"/><path class="wire live" d="M196 200 H300"/><path class="wire live" d="M196 240 H300 V200"/>
+      <path class="wire" d="M300 200 H404 V78"/><path class="wire" d="M300 200 H404 V190"/><path class="wire" d="M300 200 H404 V302"/>
+      <circle class="node-ring" cx="96" cy="78" r="7"/><text class="node-label" x="16" y="82">DEVICES</text>
+      <circle class="node-ring" cx="96" cy="190" r="7"/><text class="node-label" x="16" y="194">IDENTITY</text>
+      <circle class="node-ring" cx="96" cy="302" r="7"/><text class="node-label" x="16" y="306">BACKUP</text>
+      <circle class="node-ring core" cx="300" cy="200" r="13"/><circle cx="300" cy="200" r="3.4" fill="#14161A"/>
+      <text class="node-label b" x="300" y="236" text-anchor="middle">DECRUX</text>
+      <circle class="node-ring" cx="404" cy="78" r="7"/><text class="node-label" x="424" y="82">NETWORK</text>
+      <circle class="node-ring" cx="404" cy="190" r="7"/><text class="node-label" x="424" y="194">SUPPORT</text>
+      <circle class="node-ring" cx="404" cy="302" r="7"/><text class="node-label" x="424" y="306">REPORTING</text>
+    </svg>
+    <figcaption class="legend">
+      <span><i style="background:#2549C7"></i>live link</span>
+      <span><i style="background:#B7BCC5"></i>documented</span>
+      <span style="margin-left:auto">rev. 2026.10</span>
+    </figcaption>
+  </figure>
+</div></section>
+
+<div class="proof"><div class="wrap">
+  <div class="item"><div class="k">One day</div><div class="v">maximum reply time, from a human</div></div>
+  <div class="item"><div class="k">Flat monthly</div><div class="v">no per-ticket billing, cancel anytime</div></div>
+  <div class="item"><div class="k">HIPA-aligned</div><div class="v">for Saskatchewan clinics and their data</div></div>
+  <div class="item"><div class="k">1–50 seats</div><div class="v">the size we are built for</div></div>
+</div></div>
+
+<section class="block" id="services"><div class="wrap">
+  <div class="sec-head">
+    <div class="sec-num">02</div>
+    <div>
+      <h2 class="sec-title">Everything handled, <em>by one throat to choke.</em></h2>
+      <p class="sec-sub">Most small firms run on three vendors who blame each other. We collapse that into one accountable surface, and we document it so you are never held hostage by the person who set it up.</p>
+    </div>
+    <div class="aside">Support · Security · Growth<br>under one agreement</div>
+  </div>
+
+  <div class="pillars">
+    <article class="pillar rv">
+      <span class="idx">02.1 / MANAGED IT</span>
+      <h3>Support that answers</h3>
+      <p>Users, devices, onboarding, vendors, printers. One route for every issue, and a person on the other end of it.</p>
+      <ul><li>Single helpdesk route</li><li>Device and account coordination</li><li>Quarterly roadmap review</li></ul>
+    </article>
+    <article class="pillar rv">
+      <span class="idx">02.2 / CYBER DEFENCE</span>
+      <h3>Security you can explain</h3>
+      <p>MFA, account reviews, backups you have actually tested. Not a dashboard you never open. A posture you can describe to a client or an insurer.</p>
+      <ul><li>MFA and admin account review</li><li>Backup readiness, restore tested</li><li>Prioritised risk roadmap</li></ul>
+    </article>
+    <article class="pillar rv">
+      <span class="idx">02.3 / WEB + AI</span>
+      <h3>Growth machinery</h3>
+      <p>Sites that convert, automations that hand hours back every week. Built on infrastructure you control, not rented from someone else's.</p>
+      <ul><li>Site speed, clarity, conversion</li><li>One workflow automated per sprint</li><li>Handoff, safeguards, documentation</li></ul>
+    </article>
+  </div>
+</div></section>
+
+<section class="block" id="tools"><div class="wrap">
+  <div class="sec-head">
+    <div class="sec-num">03</div>
+    <div>
+      <h2 class="sec-title">Two instruments. <em>Zero sales call.</em></h2>
+      <p class="sec-sub">Price your own risk and your own upside before you talk to anyone. If the numbers say you do not need us, that is a useful answer too.</p>
+    </div>
+    <div class="aside">No email required<br>No form gate</div>
+  </div>
+
+  <div class="tools">
+    <div class="tool rv">
+      <div class="t-cap"><span>Instrument A</span><span>risk</span></div>
+      <h3>Where is your weakest link?</h3>
+      <p class="t-sub">Five questions. Honest answers only. Nobody is watching.</p>
+      <div class="dial-wrap">
+        <div class="dial">
+          <svg width="112" height="112" viewBox="0 0 112 112">
+            <circle cx="56" cy="56" r="49" fill="none" stroke="#EDEAE2" stroke-width="7"/>
+            <circle id="dialArc" cx="56" cy="56" r="49" fill="none" stroke="#2549C7" stroke-width="7"
+                    stroke-linecap="round" stroke-dasharray="308" stroke-dashoffset="308"
+                    style="transition:stroke-dashoffset .7s cubic-bezier(.22,1,.36,1),stroke .4s"/>
+          </svg>
+          <div class="val"><span id="scoreVal">0</span><small>/100</small></div>
+        </div>
+        <div class="dial-note" id="scoreNote">Tick what is already true. The dial fills as your posture improves.</div>
+      </div>
+      <div class="checks" id="checks">
+        <label><input type="checkbox" data-w="25"> MFA on email and every admin account</label>
+        <label><input type="checkbox" data-w="25"> We could restore our data tomorrow, and we have tried</label>
+        <label><input type="checkbox" data-w="15"> Our website actually brings us leads</label>
+        <label><input type="checkbox" data-w="20"> Devices, vendors and accounts are documented</label>
+        <label><input type="checkbox" data-w="15"> We know which repetitive work to automate first</label>
+      </div>
+      <div class="tool-foot"><a class="btn ghost" href="contact-form.html">Have the gaps read back <span class="arw">→</span></a></div>
+    </div>
+
+    <div class="tool rv">
+      <div class="t-cap"><span>Instrument B</span><span>upside</span></div>
+      <h3>What is busywork costing you?</h3>
+      <p class="t-sub">Drag to your reality. This is money you are already spending on work a machine could take.</p>
+      <div class="calc-row">
+        <div class="lbl"><span>Repetitive hours per week</span><b><span id="hrsVal">6</span> h</b></div>
+        <input type="range" id="hrs" min="1" max="40" value="6" aria-label="Repetitive hours per week">
+      </div>
+      <div class="calc-row">
+        <div class="lbl"><span>Fully-loaded hourly cost</span><b>$<span id="rateVal">35</span></b></div>
+        <input type="range" id="rate" min="15" max="150" step="5" value="35" aria-label="Hourly cost">
+      </div>
+      <div class="calc-out">
+        <div><div class="n" id="yrOut">276</div><div class="l">hours a year</div></div>
+        <div><div class="n" id="valOut">$9,660</div><div class="l">annual value</div></div>
+      </div>
+      <a class="btn ghost" href="contact-form.html">Map the first automation <span class="arw">→</span></a>
+    </div>
+  </div>
+</div></section>
+
+<section class="block" id="engagements"><div class="wrap">
+  <div class="sec-head">
+    <div class="sec-num">04</div>
+    <div>
+      <h2 class="sec-title">Pick your entry point. <em>Start small.</em></h2>
+      <p class="sec-sub">Four ways in. All of them begin with a fixed scope and a written quote. No annual lock-in, no surprise invoices.</p>
+    </div>
+    <div class="aside">No lock-in<br>Cancel anytime</div>
+  </div>
+
+  <div class="eng">
+    <a class="row rv" href="services.html#cybershield">
+      <span class="n">A</span>
+      <span><h3>CyberShield Review <span class="tag">best first move</span></h3><p class="p">Security, identity and backup review with a fix-first list.</p></span>
+      <span><ul><li>MFA and account review</li><li>Backup readiness</li><li>Priority risk roadmap</li></ul></span>
+      <span class="go">Book CyberShield →</span>
+    </a>
+    <a class="row rv" href="services.html#managed">
+      <span class="n">B</span>
+      <span><h3>Managed IT Essentials</h3><p class="p">Monthly support for users, devices and vendors.</p></span>
+      <span><ul><li>Single helpdesk route</li><li>Device and account coordination</li><li>Quarterly roadmap</li></ul></span>
+      <span class="go">Request managed IT →</span>
+    </a>
+    <a class="row rv" href="services.html#automation">
+      <span class="n">C</span>
+      <span><h3>AI Automation Sprint</h3><p class="p">Map one workflow, build the path, hand it over working.</p></span>
+      <span><ul><li>Workflow discovery</li><li>Working prototype</li><li>Handoff and safeguards</li></ul></span>
+      <span class="go">Start automation →</span>
+    </a>
+    <a class="row rv" href="services.html#web">
+      <span class="n">D</span>
+      <span><h3>Website Growth Care</h3><p class="p">Keep the site fast, clear and converting.</p></span>
+      <span><ul><li>Updates and repairs</li><li>Speed and form checks</li><li>Landing page tuning</li></ul></span>
+      <span class="go">Improve the site →</span>
+    </a>
+  </div>
+</div></section>
+
+<section class="block" id="process"><div class="wrap">
+  <div class="sec-head">
+    <div class="sec-num">05</div>
+    <div>
+      <h2 class="sec-title">Chaos to calm <em>in three moves.</em></h2>
+      <p class="sec-sub">Sequenced on purpose. You cannot automate a mess, and you cannot secure a system nobody documented.</p>
+    </div>
+    <div class="aside">Weeks, not quarters</div>
+  </div>
+  <div class="steps">
+    <div class="step rv"><div class="bar"></div><h3>Stabilize</h3>
+      <p>Kill the recurring fires: devices, email, Wi-Fi, broken forms. Document everything as we go.</p></div>
+    <div class="step rv"><div class="bar"></div><h3>Strengthen</h3>
+      <p>Lock accounts, verify backups, clean up Microsoft 365. Know your risk picture in plain language.</p></div>
+    <div class="step rv"><div class="bar"></div><h3>Modernize</h3>
+      <p>Sharper site, smoother intake, automation on the repetitive work. Technology starts earning.</p></div>
+  </div>
+</div></section>
+
+<section class="block" id="faq"><div class="wrap">
+  <div class="sec-head">
+    <div class="sec-num">06</div>
+    <div><h2 class="sec-title">Asked <em>before you ask.</em></h2></div>
+    <div class="aside">Straight answers</div>
+  </div>
+  <div class="faq">
+    <details name="faq"><summary>What does the checkup cost? <span class="pm">+</span></summary>
+      <div class="ans">Nothing. Thirty minutes, a prioritized roadmap, yours to keep whether or not we ever work together.</div></details>
+    <details name="faq"><summary>How fast do you respond? <span class="pm">+</span></summary>
+      <div class="ans">Every inquiry gets a human reply within one business day. Urgent? Call <a href="tel:+13068073430">306 807 3430</a>.</div></details>
+    <details name="faq"><summary>Are we too small? <span class="pm">+</span></summary>
+      <div class="ans">If computers matter to your day, you are big enough. Most clients are between one and fifty people.</div></details>
+    <details name="faq"><summary>Do we sign a contract? <span class="pm">+</span></summary>
+      <div class="ans">No. Start with one fix. Monthly plans exist when you want them, and cancel anytime.</div></details>
+    <details name="faq"><summary>Can you work with our current IT person? <span class="pm">+</span></summary>
+      <div class="ans">Yes. We backstop, document and handle overflow. Many engagements start exactly this way.</div></details>
+    <details name="faq"><summary>Where is our data actually stored? <span class="pm">+</span></summary>
+      <div class="ans">Where you decide. We run Canadian infrastructure: private cloud in Saskatchewan, encrypted backups, and no dependency on a vendor who can switch you off.</div></details>
+  </div>
+</div></section>
+
+<section class="close" id="start"><div class="wrap">
+  <div>
+    <div class="eyebrow">Free · 30 minutes · yours to keep</div>
+    <h2>Get the <em>roadmap.</em></h2>
+    <p>One call, no pitch deck. You leave with the three things worth fixing first, whether or not we ever work together.</p>
+    <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap">
+      <a class="btn" href="contact-form.html">Book the checkup <span class="arw">→</span></a>
+      <a class="btn ghost" href="tel:+13068073430">306 807 3430</a>
+    </div>
+  </div>
+  <div class="aside">
+    Decrux Tech<br>Regina, Saskatchewan<br>
+    <a href="mailto:info@decruxtech.com">info@decruxtech.com</a><br>
+    Reply within one business day
+  </div>
+</div></section>
+
+<footer class="site"><div class="wrap">
+  <div>
+    <a class="brand" href="index.html">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 4h9.2a12 12 0 0 1 0 24H6z" fill="currentColor"/><rect x="6" y="13.4" width="13.6" height="5.2"/></svg>
       <span class="word">Decrux <span>Tech</span></span>
     </a>
-    <nav class="links" id="navlinks">
-      <a href="/services.html">Services</a>
-      <a href="/industries.html">Industries</a>
-      <a href="/portfolio.html">Work</a>
-      <a href="/insights.html">Insights</a>
-    </nav>
-    <a class="btn" href="/contact-form.html">Free checkup <span class="arw">→</span></a>
-    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span></button>
+    <div style="margin-top:10px">IT, security and automation for Saskatchewan business.</div>
+    <div style="margin-top:10px">© <span id="yr">2026</span> Decrux Tech · Regina, SK</div>
   </div>
-</header>
-
-<!-- 01 — hero -->
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-copy">
-      <div class="eyebrow">Sovereign IT · Regina</div>
-      <h1 class="h-display hero-title">Your business,<br><em>running itself.</em></h1>
-      <p class="lede">
-        Decrux Tech is the IT department small Saskatchewan firms never had:
-        support that answers, security that holds, and automation that quietly
-        deletes the busywork. One partner. One flat bill.
-      </p>
-      <div class="cta-row">
-        <a class="btn" href="/contact-form.html">Start the free checkup <span class="arw">→</span></a>
-        <a class="textlink" href="#engagements">See what it costs <span class="arw">↓</span></a>
-      </div>
-    </div>
-
-    <!-- the instrument: what "managed" actually means, drawn -->
-    <figure class="panel" aria-label="Diagram: how a managed stack fits together">
-      <div class="cap"><span>Fig. 01 — the stack</span><b>One accountable surface</b></div>
-      <svg viewBox="0 0 520 380" role="img" aria-label="Devices, identity, backup, network and support, connected">
-        <!-- wires -->
-        <path class="wire" d="M96 78 H196 V160"/>
-        <path class="wire" d="M96 190 H196"/>
-        <path class="wire" d="M96 302 H196 V240"/>
-        <path class="wire live" d="M196 160 H300 V200"/>
-        <path class="wire live" d="M196 200 H300"/>
-        <path class="wire live" d="M196 240 H300 V200"/>
-        <path class="wire" d="M300 200 H404 V78"/>
-        <path class="wire" d="M300 200 H404 V190"/>
-        <path class="wire" d="M300 200 H404 V302"/>
-
-        <!-- left nodes -->
-        <circle class="node-ring" cx="96" cy="78" r="7"/>
-        <text class="node-label" x="16" y="82">DEVICES</text>
-        <circle class="node-ring" cx="96" cy="190" r="7"/>
-        <text class="node-label" x="16" y="194">IDENTITY</text>
-        <circle class="node-ring" cx="96" cy="302" r="7"/>
-        <text class="node-label" x="16" y="306">BACKUP</text>
-
-        <!-- core -->
-        <circle class="node-ring core" cx="300" cy="200" r="13"/>
-        <circle cx="300" cy="200" r="3.4" fill="#14161A"/>
-        <text class="node-label b" x="300" y="236" text-anchor="middle">DECRUX</text>
-
-        <!-- right nodes -->
-        <circle class="node-ring" cx="404" cy="78" r="7"/>
-        <text class="node-label" x="424" y="82">NETWORK</text>
-        <circle class="node-ring" cx="404" cy="190" r="7"/>
-        <text class="node-label" x="424" y="194">SUPPORT</text>
-        <circle class="node-ring" cx="404" cy="302" r="7"/>
-        <text class="node-label" x="424" y="306">REPORTING</text>
-      </svg>
-      <figcaption class="legend">
-        <span><i style="background:#2549C7"></i>live link</span>
-        <span><i style="background:#C9CDD4"></i>documented</span>
-        <span style="margin-left:auto">rev. 2026.10</span>
-      </figcaption>
-    </figure>
+  <div class="cols">
+    <div class="col"><h4>Firm</h4>
+      <a href="services.html">Services</a><a href="industries.html">Industries</a>
+      <a href="portfolio.html">Proof</a><a href="insights.html">Notes</a></div>
+    <div class="col"><h4>Contact</h4>
+      <a href="tel:+13068073430">306 807 3430</a><a href="mailto:info@decruxtech.com">info@decruxtech.com</a>
+      <a href="contact-form.html">Free checkup</a></div>
+    <div class="col"><h4>Legal</h4>
+      <a href="insights.html#privacy">Privacy</a><a href="insights.html#terms">Terms</a></div>
   </div>
-</section>
+</div></footer>
 
-<!-- proof strip: promises, not decorations -->
-<div class="proof">
-  <div class="wrap">
-    <div class="item"><div class="k">One day</div><div class="v">maximum reply time, from a human</div></div>
-    <div class="item"><div class="k">Flat monthly</div><div class="v">no per-ticket billing, cancel anytime</div></div>
-    <div class="item"><div class="k">HIPA-aligned</div><div class="v">for Saskatchewan clinics and their data</div></div>
-    <div class="item"><div class="k">1–50 seats</div><div class="v">the size we are built for</div></div>
-  </div>
-</div>
-
-<!-- 02 — services -->
-<section class="block" id="services">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-num">02</div>
-      <div>
-        <h2 class="sec-title">Everything handled, <em>by one throat to choke.</em></h2>
-        <p class="sec-sub">Most small firms run on three vendors who blame each other. We collapse that into one accountable surface — and document it so you are never held hostage.</p>
-      </div>
-      <div class="aside">Support · Security · Growth<br>under one agreement</div>
-    </div>
-
-    <div class="pillars">
-      <article class="pillar rv">
-        <span class="idx">02.1 / MANAGED IT</span>
-        <h3>Support that answers</h3>
-        <p>Users, devices, onboarding, vendors, printers. One route for every issue, and a person on the other end of it.</p>
-        <ul>
-          <li>Single helpdesk route</li>
-          <li>Device and account coordination</li>
-          <li>Quarterly roadmap review</li>
-        </ul>
-      </article>
-      <article class="pillar rv">
-        <span class="idx">02.2 / CYBER DEFENCE</span>
-        <h3>Security you can explain</h3>
-        <p>MFA, account reviews, backups you have actually tested. Not a dashboard you never open — a posture you can describe to a client or an insurer.</p>
-        <ul>
-          <li>MFA and admin account review</li>
-          <li>Backup readiness, restore tested</li>
-          <li>Prioritised risk roadmap</li>
-        </ul>
-      </article>
-      <article class="pillar rv">
-        <span class="idx">02.3 / WEB + AI</span>
-        <h3>Growth machinery</h3>
-        <p>Sites that convert and automations that hand hours back every week. Built on your infrastructure, not rented from someone else's.</p>
-        <ul>
-          <li>Site speed, clarity, conversion</li>
-          <li>One workflow automated per sprint</li>
-          <li>Handoff, safeguards, documentation</li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- 03 — instruments -->
-<section class="block" id="tools">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-num">03</div>
-      <div>
-        <h2 class="sec-title">Two instruments. <em>Zero sales call.</em></h2>
-        <p class="sec-sub">Price your own risk and your own upside before you talk to anyone. If the numbers say we are not needed, that is a useful answer too.</p>
-      </div>
-      <div class="aside">No email required<br>No form gate</div>
-    </div>
-
-    <div class="tools">
-      <div class="tool rv">
-        <div class="t-cap"><span>Instrument A</span><span>risk</span></div>
-        <h3>Where is your weakest link?</h3>
-        <p class="t-sub">Five questions. Honest answers only — nobody is watching.</p>
-        <div class="dial-wrap">
-          <div class="dial">
-            <svg width="112" height="112" viewBox="0 0 112 112">
-              <circle cx="56" cy="56" r="49" fill="none" stroke="#EDEAE2" stroke-width="7"/>
-              <circle id="dialArc" cx="56" cy="56" r="49" fill="none" stroke="#2549C7" stroke-width="7"
-                      stroke-linecap="round" stroke-dasharray="308" stroke-dashoffset="308"
-                      style="transition:stroke-dashoffset .7s cubic-bezier(.22,1,.36,1),stroke .4s"/>
-            </svg>
-            <div class="val"><span id="scoreVal">0</span><small>/100</small></div>
-          </div>
-          <div class="dial-note" id="scoreNote">Tick what is already true. The dial fills as your posture improves.</div>
-        </div>
-        <div class="checks" id="checks">
-          <label><input type="checkbox" data-w="25"> MFA on email and every admin account</label>
-          <label><input type="checkbox" data-w="25"> We could restore our data tomorrow, and we have tried</label>
-          <label><input type="checkbox" data-w="15"> Our website actually brings us leads</label>
-          <label><input type="checkbox" data-w="20"> Devices, vendors and accounts are documented</label>
-          <label><input type="checkbox" data-w="15"> We know which repetitive work to automate first</label>
-        </div>
-        <div class="tool-foot">
-          <a class="btn ghost" href="/contact-form.html">Have the gaps read back <span class="arw">→</span></a>
-        </div>
-      </div>
-
-      <div class="tool rv">
-        <div class="t-cap"><span>Instrument B</span><span>upside</span></div>
-        <h3>What is busywork costing you?</h3>
-        <p class="t-sub">Drag to your reality. This is money you are already spending on work a machine could take.</p>
-        <div class="calc-row">
-          <div class="lbl"><span>Repetitive hours per week</span><b><span id="hrsVal">6</span> h</b></div>
-          <input type="range" id="hrs" min="1" max="40" value="6" aria-label="Repetitive hours per week">
-        </div>
-        <div class="calc-row">
-          <div class="lbl"><span>Fully-loaded hourly cost</span><b>$<span id="rateVal">35</span></b></div>
-          <input type="range" id="rate" min="15" max="150" step="5" value="35" aria-label="Hourly cost">
-        </div>
-        <div class="calc-out">
-          <div><div class="n" id="yrOut">312</div><div class="l">hours a year</div></div>
-          <div><div class="n" id="valOut">$10,920</div><div class="l">annual value</div></div>
-        </div>
-        <a class="btn ghost" href="/contact-form.html">Map the first automation <span class="arw">→</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 04 — engagements -->
-<section class="block" id="engagements">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-num">04</div>
-      <div>
-        <h2 class="sec-title">Pick your entry point. <em>Start small.</em></h2>
-        <p class="sec-sub">Four ways in. All of them begin with a fixed scope, a written price and no annual lock-in.</p>
-      </div>
-      <div class="aside">No lock-in<br>Cancel anytime</div>
-    </div>
-
-    <div class="eng">
-      <a class="row rv" href="/services.html#cybershield">
-        <span class="n">A</span>
-        <span><h3>CyberShield Review <span class="tag">best first move</span></h3><p class="p">Security, identity and backup review with a fix-first list.</p></span>
-        <span><ul><li>MFA and account review</li><li>Backup readiness</li><li>Priority risk roadmap</li></ul></span>
-        <span class="go">Book CyberShield →</span>
-      </a>
-      <a class="row rv" href="/services.html#managed">
-        <span class="n">B</span>
-        <span><h3>Managed IT Essentials</h3><p class="p">Monthly support for users, devices and vendors.</p></span>
-        <span><ul><li>Single helpdesk route</li><li>Device and account coordination</li><li>Quarterly roadmap</li></ul></span>
-        <span class="go">Request managed IT →</span>
-      </a>
-      <a class="row rv" href="/services.html#automation">
-        <span class="n">C</span>
-        <span><h3>AI Automation Sprint</h3><p class="p">Map one workflow, build the path, hand it over working.</p></span>
-        <span><ul><li>Workflow discovery</li><li>Working prototype</li><li>Handoff and safeguards</li></ul></span>
-        <span class="go">Start automation →</span>
-      </a>
-      <a class="row rv" href="/services.html#web">
-        <span class="n">D</span>
-        <span><h3>Website Growth Care</h3><p class="p">Keep the site fast, clear and converting.</p></span>
-        <span><ul><li>Updates and repairs</li><li>Speed and form checks</li><li>Landing page tuning</li></ul></span>
-        <span class="go">Improve the site →</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- 05 — process -->
-<section class="block" id="process">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-num">05</div>
-      <div>
-        <h2 class="sec-title">Chaos to calm <em>in three moves.</em></h2>
-        <p class="sec-sub">Sequenced on purpose. You cannot automate a mess, and you cannot secure a system nobody documented.</p>
-      </div>
-      <div class="aside">Weeks, not quarters</div>
-    </div>
-
-    <div class="steps">
-      <div class="step rv">
-        <div class="bar"></div>
-        <h3>Stabilize</h3>
-        <p>Kill the recurring fires: devices, email, Wi-Fi, broken forms. Document everything as we go.</p>
-      </div>
-      <div class="step rv">
-        <div class="bar"></div>
-        <h3>Strengthen</h3>
-        <p>Lock accounts, verify backups, clean up Microsoft 365. Know your risk picture in plain language.</p>
-      </div>
-      <div class="step rv">
-        <div class="bar"></div>
-        <h3>Modernize</h3>
-        <p>Sharper site, smoother intake, automation on the repetitive work. Technology starts earning.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 06 — faq -->
-<section class="block" id="faq">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="sec-num">06</div>
-      <div>
-        <h2 class="sec-title">Asked <em>before you ask.</em></h2>
-      </div>
-      <div class="aside">Straight answers</div>
-    </div>
-
-    <div class="faq">
-      <details name="faq">
-        <summary>What does the checkup cost? <span class="pm">+</span></summary>
-        <div class="ans">Nothing. Thirty minutes, a prioritized roadmap, yours to keep whether or not we ever work together.</div>
-      </details>
-      <details name="faq">
-        <summary>How fast do you respond? <span class="pm">+</span></summary>
-        <div class="ans">Every inquiry gets a human reply within one business day. Urgent? Call <a href="tel:+13068073430">306 807 3430</a>.</div>
-      </details>
-      <details name="faq">
-        <summary>Are we too small? <span class="pm">+</span></summary>
-        <div class="ans">If computers matter to your day, you are big enough. Most clients are between one and fifty people.</div>
-      </details>
-      <details name="faq">
-        <summary>Do we sign a contract? <span class="pm">+</span></summary>
-        <div class="ans">No. Start with one fix. Monthly plans exist when you want them, and cancel anytime.</div>
-      </details>
-      <details name="faq">
-        <summary>Can you work with our current IT person? <span class="pm">+</span></summary>
-        <div class="ans">Yes. We backstop, document and handle overflow. Many engagements start exactly this way.</div>
-      </details>
-      <details name="faq">
-        <summary>Where is our data actually stored? <span class="pm">+</span></summary>
-        <div class="ans">Where you decide. We run Canadian infrastructure — private cloud in Saskatchewan, encrypted backups, and no dependency on a vendor who can switch you off.</div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- 07 — close -->
-<section class="close" id="start">
-  <div class="wrap">
-    <div>
-      <div class="eyebrow">Free · 30 minutes · yours to keep</div>
-      <h2>Get the <em>roadmap.</em></h2>
-      <p>One call, no pitch deck. You leave with the three things worth fixing first — whether or not we ever work together.</p>
-      <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap">
-        <a class="btn" href="/contact-form.html">Book the checkup <span class="arw">→</span></a>
-        <a class="btn ghost" style="color:#FCFBF8;border-color:rgba(252,251,248,.3)" href="tel:+13068073430">306 807 3430</a>
-      </div>
-    </div>
-    <div class="aside">
-      Decrux Tech<br>
-      Regina, Saskatchewan<br>
-      <a href="mailto:hello@decruxtech.com">hello@decruxtech.com</a><br>
-      Reply within one business day
-    </div>
-  </div>
-</section>
-
-<footer class="site">
-  <div class="wrap">
-    <div>
-      <div style="font-family:var(--serif);font-size:16px;color:#FCFBF8;margin-bottom:6px">Decrux Tech</div>
-      <div>IT, security and automation for Saskatchewan business.</div>
-      <div style="margin-top:10px">© <span id="yr">2026</span> Decrux Tech · Regina, SK</div>
-    </div>
-    <div class="cols">
-      <div class="col"><h4>Firm</h4>
-        <a href="/services.html">Services</a><a href="/industries.html">Industries</a>
-        <a href="/portfolio.html">Work</a><a href="/insights.html">Insights</a>
-      </div>
-      <div class="col"><h4>Contact</h4>
-        <a href="tel:+13068073430">306 807 3430</a>
-        <a href="mailto:hello@decruxtech.com">hello@decruxtech.com</a>
-        <a href="/contact-form.html">Free checkup</a>
-      </div>
-      <div class="col"><h4>Legal</h4>
-        <a href="/insights.html">Privacy</a><a href="/insights.html">Terms</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<noscript>
-  <style>.rv{opacity:1!important;transform:none!important}.wire.live{animation:none}</style>
-</noscript>
-
-<script>
-(function () {
-  'use strict';
-  var staticMode = /[?&]static\b/.test(location.search);
-  document.documentElement.classList.add('js');
-
-  /* deterministic full-reveal for QA/crawlers */
-  if (staticMode) {
-    document.body.classList.add('loaded');
-  }
-  /* safety net: never leave content invisible if JS half-fails */
-  setTimeout(function () { document.body.classList.add('loaded'); }, 2500);
-
-  /* ── reveals ─────────────────────────────────────────────── */
-  var rv = Array.prototype.slice.call(document.querySelectorAll('.rv'));
-  if ('IntersectionObserver' in window && !staticMode) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('in');
-          io.unobserve(e.target);
-        }
-      });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
-    rv.forEach(function (el) { io.observe(el); });
-  } else {
-    rv.forEach(function (el) { el.classList.add('in'); });
-  }
-
-  /* ── mobile nav ──────────────────────────────────────────── */
-  var burger = document.getElementById('burger');
-  var links = document.getElementById('navlinks');
-  if (burger && links) {
-    burger.addEventListener('click', function () {
-      var open = links.classList.toggle('open');
-      burger.setAttribute('aria-expanded', String(open));
-    });
-    links.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') links.classList.remove('open');
-    });
-  }
-
-  /* ── risk dial ───────────────────────────────────────────── */
-  var boxes = Array.prototype.slice.call(document.querySelectorAll('#checks input'));
-  var arc = document.getElementById('dialArc');
-  var val = document.getElementById('scoreVal');
-  var note = document.getElementById('scoreNote');
-  var CIRC = 308;
-
-  function describe(score) {
-    if (score >= 85) return ['Solid', 'This is a posture that survives an audit. Keep it documented.'];
-    if (score >= 55) return ['Uneven', 'The basics are there. The gaps are the expensive part.'];
-    if (score >= 25) return ['Exposed', 'Enough missing that one bad email could cost you a week.'];
-    return ['Open door', 'Start with MFA and one tested restore. Those two move the needle most.'];
-  }
-
-  function redraw() {
-    var score = boxes.reduce(function (sum, b) { return sum + (b.checked ? parseInt(b.dataset.w, 10) : 0); }, 0);
-    if (val) val.textContent = String(score);
-    if (arc) arc.setAttribute('stroke-dashoffset', String(CIRC - (CIRC * score / 100)));
-    if (arc) arc.setAttribute('stroke', score >= 85 ? '#1E8F63' : score >= 55 ? '#2549C7' : score >= 25 ? '#B4761A' : '#B23A2E');
-    var d = describe(score);
-    if (note) note.innerHTML = '<b>' + d[0] + '.</b> ' + d[1];
-  }
-  boxes.forEach(function (b) { b.addEventListener('change', redraw); });
-  if (boxes.length) redraw();
-
-  /* ── calculator ──────────────────────────────────────────── */
-  var hrs = document.getElementById('hrs');
-  var rate = document.getElementById('rate');
-  function money(n) { return '$' + Math.round(n).toLocaleString('en-CA'); }
-  function calc() {
-    if (!hrs || !rate) return;
-    var h = parseInt(hrs.value, 10), r = parseInt(rate.value, 10);
-    var perYear = Math.round(h * 46);          /* 46 working weeks */
-    var value = perYear * r;
-    var hv = document.getElementById('hrsVal'), rv2 = document.getElementById('rateVal');
-    var yo = document.getElementById('yrOut'), vo = document.getElementById('valOut');
-    if (hv) hv.textContent = String(h);
-    if (rv2) rv2.textContent = String(r);
-    if (yo) yo.textContent = String(perYear);
-    if (vo) vo.textContent = money(value);
-  }
-  if (hrs) hrs.addEventListener('input', calc);
-  if (rate) rate.addEventListener('input', calc);
-  calc();
-
-  /* ── footer year ─────────────────────────────────────────── */
-  var y = document.getElementById('yr');
-  if (y) y.textContent = String(new Date().getFullYear());
-})();
-</script>
+<noscript><style>.rv{opacity:1!important;transform:none!important}.wire.live{animation:none}</style></noscript>
+<script src="assets/site.js"></script>
 </body>
 </html>

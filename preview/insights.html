@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notes · Decrux Tech</title>
+<meta name="description" content="Short essays on running small-firm infrastructure in Saskatchewan: the checkup, per-ticket billing, HIPA in practice, and owning your stack.">
+<meta name="theme-color" content="#FCFBF8">
+<link rel="canonical" href="https://decruxtech.com/insights.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<div class="topline"><div class="wrap">
+  <span class="coords">Regina, Saskatchewan · 50.4452° N, 104.6189° W</span>
+  <span class="right"><span><span class="dot"></span>Accepting clients</span><a href="tel:+13068073430">306 807 3430</a></span>
+</div></div>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html">
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 4h9.2a12 12 0 0 1 0 24H6z" fill="currentColor"/><rect x="6" y="13.4" width="13.6" height="5.2"/></svg>
+    <span class="word">Decrux <span>Tech</span></span>
+  </a>
+  <nav class="links" id="navlinks">
+    <a href="services.html">Services</a>
+    <a href="industries.html">Industries</a>
+    <a href="portfolio.html">Proof</a>
+    <a href="insights.html" aria-current="page">Notes</a>
+  </nav>
+  <a class="btn" href="contact-form.html">Free checkup <span class="arw">→</span></a>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span></button>
+</div></header>
+
+<section class="page-hero"><div class="wrap">
+  <div class="crumbs"><a href="index.html">Home</a><span>/</span>Notes</div>
+  <div class="eyebrow">From the work</div>
+  <h1>Notes, <em>not content.</em></h1>
+  <p class="lede">Short pieces about how small firms actually run their technology here. Written because we keep having the same conversations, and writing them down saves everyone the first ten minutes.</p>
+</div></section>
+
+<section class="block"><div class="wrap">
+  <div class="articles">
+    <a class="article-row rv" href="#checkup">
+      <span class="date">Oct 2026</span>
+      <span><h3>The 30-minute checkup is the whole business model</h3>
+        <p>Why we give away the diagnosis, and what a firm that charges for it is really telling you.</p></span>
+      <span class="meta">4 min</span>
+    </a>
+    <a class="article-row rv" href="#tickets">
+      <span class="date">Sep 2026</span>
+      <span><h3>We do not bill by the ticket</h3>
+        <p>Per-ticket billing pays a firm to be slow. There is a better alignment, and it is not complicated.</p></span>
+      <span class="meta">3 min</span>
+    </a>
+    <a class="article-row rv" href="#hipa">
+      <span class="date">Sep 2026</span>
+      <span><h3>What HIPA actually asks of a small clinic</h3>
+        <p>Saskatchewan runs on HIPA, not PIPEDA. What that changes in practice, and what it does not.</p></span>
+      <span class="meta">5 min</span>
+    </a>
+    <a class="article-row rv" href="#stack">
+      <span class="date">Aug 2026</span>
+      <span><h3>Own your stack, or rent your constraints</h3>
+        <p>The quiet cost of building a business on infrastructure someone else can switch off.</p></span>
+      <span class="meta">4 min</span>
+    </a>
+  </div>
+</div></section>
+
+<section class="block" id="checkup"><div class="wrap">
+  <div class="split narrow">
+    <div>
+      <div class="eyebrow">Oct 2026</div>
+      <h2 class="sec-title" style="margin-top:12px">The 30-minute checkup is <em>the whole business model.</em></h2>
+    </div>
+    <div class="prose">
+      <p class="lead">If a firm will not look at your setup without a signed agreement, the diagnosis is not the problem they are selling you. The agreement is.</p>
+      <p>A checkup is cheap to give away because it costs us little and tells us everything. In thirty minutes we learn whether the backups are real, whether the accounts are shared, and whether the person across the table actually wants the problem solved. Roughly half the time, the honest answer is that they need one fix and no ongoing service. Saying that out loud has been better for business than any pitch.</p>
+      <p>It also sets the terms of the relationship. The roadmap is yours whether or not you hire us, which means the next conversation is about work, not about trust. Any firm that needs a contract before it will tell you what is broken is telling you something about how it earns.</p>
+      <h3>What happens in the thirty minutes</h3>
+      <ul>
+        <li>How access works today, and who holds the keys</li>
+        <li>What is backed up, and when it was last restored</li>
+        <li>The three things that would hurt most if they failed tomorrow</li>
+      </ul>
+      <p>You leave with those three, ordered. That is the entire deliverable, and it is genuinely useful even if we never speak again.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="block" id="tickets"><div class="wrap">
+  <div class="split narrow">
+    <div>
+      <div class="eyebrow">Sep 2026</div>
+      <h2 class="sec-title" style="margin-top:12px">We do not <em>bill by the ticket.</em></h2>
+    </div>
+    <div class="prose">
+      <p class="lead">A per-ticket model pays a firm to let small problems stay small until they are expensive.</p>
+      <p>Consider the incentive. If every phone call is an invoice line, the customer learns to wait. They batch problems, work around them, and call only when something is properly broken. The firm earns more per incident and less per relationship. Nobody planned this; it is simply what the pricing rewards.</p>
+      <p>Flat monthly flips it. Prevention is cheaper than repair for us, so it is worth our time to fix the recurring thing permanently rather than close the ticket. It also makes your costs predictable, which matters more to a fifteen-person firm than any discount.</p>
+      <blockquote>The bill should not change because something broke.</blockquote>
+      <p>That is the whole argument. Everything else about how we work follows from it.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="block" id="hipa"><div class="wrap">
+  <div class="split narrow">
+    <div>
+      <div class="eyebrow">Sep 2026</div>
+      <h2 class="sec-title" style="margin-top:12px">What HIPA actually asks of <em>a small clinic.</em></h2>
+    </div>
+    <div class="prose">
+      <p class="lead">Saskatchewan clinics answer to the Health Information Protection Act, not PIPEDA. That distinction matters more than most software vendors admit.</p>
+      <p>In practice the obligations land in a few ordinary places. You need to know who can see patient information and be able to show it. You need a custodian who is accountable for it. You need to keep it inside systems you have actually assessed, and you need a plan for the day a laptop goes missing.</p>
+      <p>None of that requires exotic technology. Most of it requires naming a person, writing down what is true today, and closing the gaps that are indefensible rather than the ones that are merely untidy.</p>
+      <h3>The four that come up every time</h3>
+      <ul>
+        <li>Shared logins, which make an access record meaningless</li>
+        <li>Backups that exist but have never been restored</li>
+        <li>Patient information in personal email or a phone camera roll</li>
+        <li>No written answer to "what do we do if this machine is stolen"</li>
+      </ul>
+      <div class="note" style="margin-top:24px"><b>Not legal advice.</b> This is an operational summary from doing the work, not a legal opinion. Your college or a Saskatchewan lawyer should confirm obligations for your practice.</div>
+    </div>
+  </div>
+</div></section>
+
+<section class="block" id="stack"><div class="wrap">
+  <div class="split narrow">
+    <div>
+      <div class="eyebrow">Aug 2026</div>
+      <h2 class="sec-title" style="margin-top:12px">Own your stack, or <em>rent your constraints.</em></h2>
+    </div>
+    <div class="prose">
+      <p class="lead">Every rented tool is a decision someone else can reverse on your behalf.</p>
+      <p>Subscription infrastructure is usually the right call. It is cheaper, faster and better maintained than anything a small firm would build. The trouble starts when the rental becomes the business: the client list, the booking system, the records, the identity that everything else trusts.</p>
+      <p>The test we apply is simple. If this vendor doubled its price, changed its terms or disappeared next quarter, what would we still have? If the answer is "an export nobody can read", that is not a technology decision, it is a dependency.</p>
+      <h3>Where we draw the line</h3>
+      <ul>
+        <li>Records and client data: yours, exportable, on infrastructure you control</li>
+        <li>Identity: your own domain, your own admin account</li>
+        <li>Website and email: portable, with a documented way to move</li>
+        <li>Everything else: rent happily, as long as the export works</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section class="block" id="privacy"><div class="wrap">
+  <div class="split narrow">
+    <div><div class="eyebrow">Plain language</div><h2 class="sec-title" style="margin-top:12px">Privacy</h2></div>
+    <div class="prose">
+      <p>This site sets no advertising cookies and runs no third-party analytics. There is no tracking pixel and no session recording.</p>
+      <p>If you send the contact form, the details you type are delivered by email so we can reply. They are not stored in a marketing system or sold. Ask us to delete a message and we will.</p>
+      <p>Fonts are served by Google Fonts; the request reveals your IP address to them, as any web font does. Everything else is served from this domain.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="block" id="terms"><div class="wrap">
+  <div class="split narrow">
+    <div><div class="eyebrow">Plain language</div><h2 class="sec-title" style="margin-top:12px">Terms</h2></div>
+    <div class="prose">
+      <p>Content here is general information about how we work. It is not advice for your specific situation, and it is not a legal opinion.</p>
+      <p>Engagements are governed by a written agreement signed before work starts, under the laws of Saskatchewan. Nothing on this site forms a contract or a guarantee of outcome.</p>
+      <p>Tools on this site (the risk score and the calculator) run entirely in your browser and are estimates for orientation, not assessments.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="close" id="start"><div class="wrap">
+  <div>
+    <div class="eyebrow">Free · 30 minutes · yours to keep</div>
+    <h2>Put a name <em>to the problem.</em></h2>
+    <p>Most of these notes started as a conversation with one firm. Yours can start the same way.</p>
+    <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap">
+      <a class="btn" href="contact-form.html">Book the checkup <span class="arw">→</span></a>
+      <a class="btn ghost" href="tel:+13068073430">306 807 3430</a>
+    </div>
+  </div>
+  <div class="aside">Decrux Tech<br>Regina, Saskatchewan<br>
+    <a href="mailto:info@decruxtech.com">info@decruxtech.com</a><br>Reply within one business day</div>
+</div></section>
+
+<footer class="site"><div class="wrap">
+  <div>
+    <a class="brand" href="index.html">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 4h9.2a12 12 0 0 1 0 24H6z" fill="currentColor"/><rect x="6" y="13.4" width="13.6" height="5.2"/></svg>
+      <span class="word">Decrux <span>Tech</span></span>
+    </a>
+    <div style="margin-top:10px">IT, security and automation for Saskatchewan business.</div>
+    <div style="margin-top:10px">© <span id="yr">2026</span> Decrux Tech · Regina, SK</div>
+  </div>
+  <div class="cols">
+    <div class="col"><h4>Firm</h4>
+      <a href="services.html">Services</a><a href="industries.html">Industries</a>
+      <a href="portfolio.html">Proof</a><a href="insights.html">Notes</a></div>
+    <div class="col"><h4>Contact</h4>
+      <a href="tel:+13068073430">306 807 3430</a><a href="mailto:info@decruxtech.com">info@decruxtech.com</a>
+      <a href="contact-form.html">Free checkup</a></div>
+    <div class="col"><h4>Legal</h4>
+      <a href="insights.html#privacy">Privacy</a><a href="insights.html#terms">Terms</a></div>
+  </div>
+</div></footer>
+
+<noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
+<script src="assets/site.js"></script>
+</body>
+</html>
