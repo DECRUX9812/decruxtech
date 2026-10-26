@@ -1,0 +1,13 @@
+{
+  "name": "Decrux Tech",
+  "short_name": "Decrux",
+  "description": "Managed IT, security and automation in Regina, Saskatchewan.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#FCFBF8",
+  "theme_color": "#14161A",
+  "icons": [
+    {"src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}

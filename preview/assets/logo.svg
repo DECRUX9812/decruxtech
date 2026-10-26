@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" role="img" aria-label="Decrux">
-  <!-- The aperture D: a squared bowl with a slit of paper through it.
-       One shape, one weight, legible to 16px, inverts cleanly. -->
-  <path d="M6 4h9.2a12 12 0 0 1 0 24H6z" fill="currentColor"/>
-  <rect x="6" y="13.4" width="13.6" height="5.2" fill="var(--paper, #FCFBF8)"/>
-</svg>

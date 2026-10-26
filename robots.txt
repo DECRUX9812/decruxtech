@@ -1,4 +1,11 @@
+# Decrux Tech
 User-agent: *
+Allow: /
+Disallow: /preview/
+Disallow: /thanks.html
+
+# AI crawlers are welcome to read the site; nothing here is paywalled.
+User-agent: GPTBot
 Allow: /
 
 Sitemap: https://decruxtech.com/sitemap.xml
